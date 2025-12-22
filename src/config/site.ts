@@ -5,7 +5,6 @@ export const siteConfig = {
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
     { label: "Hire Developers", href: "/hire", isMegaMenu: true }, // Added Mega Menu Trigger
-    { label: "Portfolio", href: "/portfolio" },
     { label: "About", href: "/about" },
     { label: "Career", href: "/career" },
     { label: "Contact", href: "/contact" },

@@ -102,7 +102,6 @@ export function Footer() {
                 { label: "Contact Us", href: "/contact" },
                 { label: "Services", href: "/services" },
                 { label: "Blog", href: "/blog" },
-                { label: "Our Portfolio", href: "/portfolio" },
                 { label: "About Us", href: "/about" },
                 { label: "FAQs", href: "/faqs" },
               ].map((item) => (

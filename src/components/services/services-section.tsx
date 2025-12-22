@@ -89,10 +89,13 @@ export function ServicesSection() {
           <p className="text-lg text-slate-600 mb-6">
             Not sure which service is right for you?
           </p>
-          <button className="group px-8 py-4 rounded-full bg-brand-cyan text-white font-semibold shadow-lg shadow-brand-cyan/20 hover:bg-brand-dark hover:shadow-brand-dark/30 transition-all duration-300">
-            Schedule a Free Consultation
+          <Link 
+            href="#consultancy-section"
+            className="group inline-flex items-center px-8 py-4 rounded-full bg-brand-cyan text-white font-semibold shadow-lg shadow-brand-cyan/20 hover:bg-brand-dark hover:shadow-brand-dark/30 transition-all duration-300"
+          >
+            Schedule a free call
             <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
         </motion.div>
       </div>
     </section>

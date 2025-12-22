@@ -6,6 +6,7 @@ import { TypewriterTitle } from "@/components/hero/typewriter-title"
 import { motion } from "framer-motion"
 import { Rocket, TrendingUp, Target, ArrowUpRight } from "lucide-react"
 import { LucideIcon } from "lucide-react"
+import Link from "next/link"
 
 export function Hero() {
   return (
@@ -36,6 +37,27 @@ export function Hero() {
           >
             {siteConfig.hero.subHeadline}
           </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="flex flex-wrap justify-center gap-4 mb-10"
+          >
+            <Link
+              href="#consultancy-section" 
+              className="px-8 py-4 bg-gradient-to-r from-brand-cyan to-brand-deep text-white font-bold rounded-full shadow-xl shadow-cyan-500/20 hover:scale-105 transition-all duration-300 flex items-center gap-2"
+            >
+              Let's Talk Business
+              <ArrowUpRight className="w-5 h-5" />
+            </Link>
+            <Link 
+              href="#consultancy-section" 
+              className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-slate-800 font-bold rounded-full hover:bg-white/20 transition-all duration-300 flex items-center gap-2"
+            >
+              Schedule a free call
+            </Link>
+          </motion.div>
         </motion.div>
 
         <motion.div 
