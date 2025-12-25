@@ -45,12 +45,12 @@ const caseStudies = [
 
 export function CaseStudies() {
   return (
-    <section className="relative w-full py-24 bg-slate-50 overflow-hidden">
+    <section className="relative w-full py-16 md:py-20 lg:py-24 bg-slate-50 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       
       <div className="container relative z-10 px-4 mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-4 md:gap-6">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -77,7 +77,7 @@ export function CaseStudies() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {caseStudies.map((study, index) => (
             <CaseStudyCard key={index} {...study} index={index} />
           ))}
@@ -98,7 +98,7 @@ function CaseStudyCard({ title, category, description, icon: Icon, techStack, co
       className="group relative bg-white rounded-3xl overflow-hidden border border-slate-100 hover:border-slate-200 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-brand-cyan/10 transition-all duration-300 flex flex-col h-full cursor-pointer"
     >
       <Link href={`/case-studies/${(rest as any).slug}`} className="absolute inset-0 z-20" />
-      <div className="p-8 md:p-10 flex flex-col h-full relative z-10">
+      <div className="p-6 md:p-8 lg:p-10 flex flex-col h-full relative z-10">
         <div className="flex justify-between items-start mb-6">
           <div className={`p-4 rounded-2xl ${color} bg-opacity-10 text-${color.split('-')[1]}-600`}>
              <Icon className={`w-8 h-8 ${color.replace('bg-', 'text-')}`} />
@@ -108,7 +108,7 @@ function CaseStudyCard({ title, category, description, icon: Icon, techStack, co
           </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-brand-dark mb-4 group-hover:text-brand-cyan transition-colors">
+        <h3 className="text-xl md:text-2xl font-bold text-brand-dark mb-3 md:mb-4 group-hover:text-brand-cyan transition-colors">
           {title}
         </h3>
         <p className="text-slate-600 mb-8 leading-relaxed flex-grow">

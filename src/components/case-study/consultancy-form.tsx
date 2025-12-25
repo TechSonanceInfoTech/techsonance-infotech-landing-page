@@ -43,44 +43,44 @@ export function ConsultancyForm() {
           <p className="text-slate-400">{formStatus.message}</p>
         </motion.div>
       ) : (
-        <form id="case-study-contact-form" action={handleSubmit} className="space-y-6">
+        <form id="case-study-contact-form" action={handleSubmit} className="space-y-4 md:space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-300 ml-1">Full Name</label>
+              <label className="text-xs md:text-sm font-semibold text-slate-300 ml-1">Full Name</label>
               <Input 
                 name="name"
                 placeholder="John Doe"
-                className="h-14 bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:border-brand-cyan/50 focus:ring-brand-cyan/20 rounded-xl"
+                className="h-12 md:h-14 bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:border-brand-cyan/50 focus:ring-brand-cyan/20 rounded-xl text-sm md:text-base"
                 required
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-slate-300 ml-1">Email Address</label>
+              <label className="text-xs md:text-sm font-semibold text-slate-300 ml-1">Email Address</label>
               <Input 
                 name="email"
                 type="email"
                 placeholder="john@example.com"
-                className="h-14 bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:border-brand-cyan/50 focus:ring-brand-cyan/20 rounded-xl"
+                className="h-12 md:h-14 bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:border-brand-cyan/50 focus:ring-brand-cyan/20 rounded-xl text-sm md:text-base"
                 required
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-semibold text-slate-300 ml-1">Phone Number (Optional)</label>
+            <label className="text-xs md:text-sm font-semibold text-slate-300 ml-1">Phone Number (Optional)</label>
             <Input 
               name="phone"
               placeholder="+1 (555) 000-0000"
-              className="h-14 bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:border-brand-cyan/50 focus:ring-brand-cyan/20 rounded-xl"
+              className="h-12 md:h-14 bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:border-brand-cyan/50 focus:ring-brand-cyan/20 rounded-xl text-sm md:text-base"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-semibold text-slate-300 ml-1">Project Details</label>
+            <label className="text-xs md:text-sm font-semibold text-slate-300 ml-1">Project Details</label>
             <Textarea 
               name="message"
               placeholder="Tell us about your goals, timeline, and requirements..."
-              className="min-h-[160px] bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:border-brand-cyan/50 focus:ring-brand-cyan/20 rounded-xl resize-none"
+              className="min-h-[140px] md:min-h-[160px] bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:border-brand-cyan/50 focus:ring-brand-cyan/20 rounded-xl resize-none text-sm md:text-base"
               required
             />
           </div>
@@ -93,7 +93,7 @@ export function ConsultancyForm() {
 
           <Button 
             disabled={isPending}
-            className="w-full h-16 bg-gradient-to-r from-brand-cyan to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold text-xl rounded-xl shadow-xl shadow-brand-cyan/20 transition-all duration-300 flex items-center justify-center gap-3 group"
+            className="w-full h-14 md:h-16 bg-gradient-to-r from-brand-cyan to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold text-lg md:text-xl rounded-xl shadow-xl shadow-brand-cyan/20 transition-all duration-300 flex items-center justify-center gap-3 group"
           >
             {isPending ? (
               <>

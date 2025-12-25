@@ -33,37 +33,37 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#0A1A2F] text-slate-300 border-t border-white/5 pt-16 pb-8">
+    <footer className="bg-[#0A1A2F] text-slate-300 border-t border-white/5 pt-12 md:pt-16 pb-6 md:pb-8">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-16">
           
           {/* Column 1: Company Branding & Contact */}
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             <div className="flex items-center gap-3">
               <Link href="/" className="flex-shrink-0">
                 <img 
                   src="/logo.png" 
                   alt={`${siteConfig.name} Logo`} 
-                  className="h-12 w-auto object-contain"
+                  className="h-10 md:h-12 w-auto object-contain"
                 />
               </Link>
               <div className="flex flex-col justify-center">
-                <span className="font-bold text-xl text-white leading-none">
+                <span className="font-bold text-lg md:text-xl text-white leading-none">
                   TechSonance
                 </span>
-                <span className="text-sm font-medium text-slate-400 tracking-[0.2em] uppercase leading-none mt-1">
+                <span className="text-xs md:text-sm font-medium text-slate-400 tracking-[0.2em] uppercase leading-none mt-1">
                   InfoTech LLP
                 </span>
               </div>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-lg font-bold text-white tracking-tight">Contact</h3>
+              <h3 className="text-base md:text-lg font-bold text-white tracking-tight">Contact</h3>
               <ul className="space-y-2.5">
                 <li>
                   <a 
                     href={`mailto:${contactConfig.contactOptions.options[0].value}`}
-                    className="flex items-start gap-2.5 hover:text-brand-cyan transition-colors group"
+                    className="flex items-start gap-2.5 hover:text-brand-cyan transition-colors group touch-target py-1"
                   >
                     <Mail className="w-4 h-4 text-brand-cyan/70 group-hover:text-brand-cyan mt-0.5 flex-shrink-0" />
                     <span className="text-sm break-words">{contactConfig.contactOptions.options[0].value}</span>
@@ -72,7 +72,7 @@ export function Footer() {
                 <li>
                   <a 
                     href={`tel:${contactConfig.contactOptions.options[1].value.replace(/\s/g, '')}`}
-                    className="flex items-start gap-2.5 hover:text-brand-cyan transition-colors group"
+                    className="flex items-start gap-2.5 hover:text-brand-cyan transition-colors group touch-target py-1"
                   >
                     <Phone className="w-4 h-4 text-brand-cyan/70 group-hover:text-brand-cyan mt-0.5 flex-shrink-0" />
                     <span className="text-sm break-words">{contactConfig.contactOptions.options[1].value}</span>
@@ -95,8 +95,8 @@ export function Footer() {
           </div>
 
           {/* Column 2: Help & Advice */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white tracking-tight">Help & Advice</h3>
+          <div className="space-y-4 md:space-y-6">
+            <h3 className="text-lg md:text-xl font-bold text-white tracking-tight">Help & Advice</h3>
             <ul className="space-y-3">
               {[
                 { label: "Contact Us", href: "/contact" },
@@ -106,7 +106,7 @@ export function Footer() {
                 { label: "FAQs", href: "/faqs" },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="flex items-center gap-2 hover:text-brand-cyan transition-colors group">
+                  <Link href={item.href} className="flex items-center gap-2 hover:text-brand-cyan transition-colors group touch-target py-1">
                     <ArrowRight className="w-4 h-4 text-brand-cyan/50 group-hover:translate-x-1 transition-transform" />
                     {item.label}
                   </Link>
@@ -116,11 +116,11 @@ export function Footer() {
           </div>
 
           {/* Column 3: Services */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white tracking-tight">Services</h3>
+          <div className="space-y-4 md:space-y-6">
+            <h3 className="text-lg md:text-xl font-bold text-white tracking-tight">Services</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/services/web-development" className="flex items-center gap-2.5 hover:text-brand-cyan transition-colors group">
+                <Link href="/services/web-development" className="flex items-center gap-2.5 hover:text-brand-cyan transition-colors group touch-target py-1">
                   <Globe className="w-4 h-4 text-brand-cyan/70 group-hover:text-brand-cyan transition-colors" />
                   <span className="text-sm">Web Development</span>
                 </Link>
@@ -153,8 +153,8 @@ export function Footer() {
           </div>
 
           {/* Column 4: Hire Developers */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white tracking-tight">Hire Developers</h3>
+          <div className="space-y-4 md:space-y-6">
+            <h3 className="text-lg md:text-xl font-bold text-white tracking-tight">Hire Developers</h3>
             <ul className="space-y-3">
               <li>
                 <Link href="/hire/reactjs-developers" className="flex items-center gap-2.5 hover:text-brand-cyan transition-colors group">
@@ -192,15 +192,15 @@ export function Footer() {
         </div>
 
         {/* Social Media Row */}
-        <div className="border-t border-white/10 pt-8 pb-6">
-          <div className="flex items-center gap-4 justify-center">
+        <div className="border-t border-white/10 pt-6 md:pt-8 pb-4 md:pb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 justify-center">
               <span className="text-sm font-semibold text-white">Follow Us:</span>
-              <div className="flex gap-3">
+              <div className="flex gap-2 md:gap-3">
                 <a 
                   href="https://linkedin.com/company/techsonance-infotech/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-9 h-9 bg-white/5 hover:bg-brand-cyan rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  className="w-10 h-10 md:w-11 md:h-11 bg-white/5 hover:bg-brand-cyan rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 touch-target"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-4 h-4" />
@@ -209,7 +209,7 @@ export function Footer() {
                   href="https://x.com/techsonance_in" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-9 h-9 bg-white/5 hover:bg-brand-cyan rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  className="w-10 h-10 md:w-11 md:h-11 bg-white/5 hover:bg-brand-cyan rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 touch-target"
                   aria-label="X (Twitter)"
                 >
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
@@ -220,7 +220,7 @@ export function Footer() {
                   href="https://www.instagram.com/techsonance_infotech/?igsh=MTZqNm04enMxaGZmbg%3D%3D#" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-9 h-9 bg-white/5 hover:bg-brand-cyan rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  className="w-10 h-10 md:w-11 md:h-11 bg-white/5 hover:bg-brand-cyan rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 touch-target"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-4 h-4" />
@@ -229,7 +229,7 @@ export function Footer() {
                   href="https://www.facebook.com/people/TechSonance-InfoTech/61583918872159/?rdid=hWr8x5FiMIPKTaVJ&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1TKgqjwQ9u%2F" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-9 h-9 bg-white/5 hover:bg-brand-cyan rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  className="w-10 h-10 md:w-11 md:h-11 bg-white/5 hover:bg-brand-cyan rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 touch-target"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-4 h-4" />
@@ -239,8 +239,8 @@ export function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex flex-col md:flex-row items-center gap-6">
+        <div className="border-t border-white/10 pt-4 md:pt-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6">
             <div className="flex items-center gap-2">
                {/* Small Text Logo */}
                <span className="text-brand-cyan font-bold text-2xl tracking-tighter">TI</span>
@@ -254,8 +254,8 @@ export function Footer() {
             </div>
           </div>
 
-          <nav className="flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-400">
-             <Link href="/career" className="hover:text-brand-cyan transition-colors">Career</Link>
+          <nav className="flex flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm font-medium text-slate-400">
+             <Link href="/career" className="hover:text-brand-cyan transition-colors touch-target py-2">Career</Link>
              <Link href="/about" className="hover:text-brand-cyan transition-colors">About Us</Link>
              <Link href="/legal/privacy-policy" className="hover:text-brand-cyan transition-colors">Privacy Policy</Link>
              <Link href="/legal/terms-conditions" className="hover:text-brand-cyan transition-colors">Terms & Conditions</Link>

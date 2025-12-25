@@ -10,58 +10,139 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white">
       
-      {/* Hero Section - Enhanced */}
-      <section className="relative bg-gradient-to-br from-brand-dark via-brand-deep to-brand-dark text-white py-24 md:py-32 overflow-hidden">
+      {/* Hero Section - Enhanced with Interactive Visuals */}
+      <section className="relative bg-gradient-to-br from-brand-dark via-brand-deep to-brand-dark text-white py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="absolute top-20 right-10 w-96 h-96 bg-brand-cyan/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-10 left-10 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         
-        <div className="container mx-auto px-4 md:px-6 max-w-6xl relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
+        <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Left Column - Text Content */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-brand-cyan/20 backdrop-blur-sm border border-brand-cyan/30 rounded-full text-sm font-medium mb-6"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center lg:text-left"
             >
-              <Sparkles className="w-4 h-4" />
-              Professional Software Development
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-brand-cyan/20 backdrop-blur-sm border border-brand-cyan/30 rounded-full text-sm font-medium mb-6"
+              >
+                <Sparkles className="w-4 h-4" />
+                Professional Software Development
+              </motion.div>
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-6 leading-tight">
+                {servicesConfig.hero.headline}
+              </h1>
+              
+              <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                {servicesConfig.hero.subheadline}
+              </p>
+
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
+                {servicesConfig.hero.highlights.map((highlight, index) => (
+                  <motion.span 
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+                    className="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm font-semibold hover:bg-white/20 transition-all"
+                  >
+                    {highlight}
+                  </motion.span>
+                ))}
+              </div>
+
+              <Link href={servicesConfig.hero.ctaHref}>
+                <Button className="px-8 py-6 bg-brand-cyan hover:bg-cyan-600 text-white font-bold text-lg rounded-xl shadow-2xl transition-all duration-200 hover:shadow-cyan-500/50 hover:scale-105">
+                  {servicesConfig.hero.ctaText}
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
             </motion.div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-              {servicesConfig.hero.headline}
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed">
-              {servicesConfig.hero.subheadline}
-            </p>
+            {/* Right Column - Interactive Visual Elements */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative h-[500px] hidden lg:block"
+            >
+              {/* Central glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/20 to-blue-500/20 rounded-full blur-3xl"></div>
+              
+              {/* Floating service icons in a circular pattern */}
+              {servicesConfig.overview.services.map((service, index) => {
+                const angle = (index * 360) / servicesConfig.overview.services.length
+                const radius = 180
+                const x = Math.cos((angle * Math.PI) / 180) * radius
+                const y = Math.sin((angle * Math.PI) / 180) * radius
+                
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: 0.3 + index * 0.1,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      repeatDelay: 2
+                    }}
+                    className="absolute top-1/2 left-1/2 cursor-pointer group"
+                    style={{
+                      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`
+                    }}
+                  >
+                    <div className="relative">
+                      {/* Glow effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/30 to-blue-500/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      
+                      {/* Icon container */}
+                      <div className="relative w-20 h-20 bg-gradient-to-br from-brand-cyan to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-cyan-500/30 border-2 border-white/10 group-hover:scale-110 transition-transform duration-300">
+                        <service.icon className="w-10 h-10 text-white" />
+                      </div>
+                      
+                      {/* Service name tooltip */}
+                      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                        <span className="text-xs font-bold bg-white text-brand-dark px-3 py-1 rounded-full shadow-lg">
+                          {service.name}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              })}
+              
+              {/* Center element */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/40 to-blue-500/40 rounded-full blur-2xl animate-pulse"></div>
+                  <div className="relative w-32 h-32 bg-gradient-to-br from-white to-gray-100 rounded-full flex items-center justify-center shadow-2xl">
+                    <Sparkles className="w-16 h-16 text-brand-cyan" />
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Decorative connecting lines */}
+              <svg className="absolute inset-0 w-full h-full opacity-20" style={{ pointerEvents: 'none' }}>
+                <circle cx="50%" cy="50%" r="180" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="5,5" className="text-brand-cyan/30" />
+                <circle cx="50%" cy="50%" r="140" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="5,5" className="text-brand-cyan/20" />
+              </svg>
+            </motion.div>
 
-            <div className="flex flex-wrap gap-3 justify-center mb-10">
-              {servicesConfig.hero.highlights.map((highlight, index) => (
-                <motion.span 
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                  className="px-5 py-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm font-semibold hover:bg-white/20 transition-all"
-                >
-                  {highlight}
-                </motion.span>
-              ))}
-            </div>
-
-            <Link href={servicesConfig.hero.ctaHref}>
-              <Button className="px-10 py-7 bg-brand-cyan hover:bg-cyan-600 text-white font-bold text-lg rounded-xl shadow-2xl transition-all duration-200 hover:shadow-cyan-500/50 hover:scale-105">
-                {servicesConfig.hero.ctaText}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 

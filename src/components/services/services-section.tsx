@@ -36,7 +36,7 @@ const badgeColors: Record<string, string> = {
 
 export function ServicesSection() {
   return (
-    <section className="relative w-full py-24 md:py-32 bg-slate-50 overflow-hidden">
+    <section className="relative w-full py-16 md:py-20 lg:py-24 xl:py-32 bg-slate-50 overflow-hidden">
       {/* Subtle background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,194,255,0.03),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(10,26,47,0.03),transparent_50%)]" />
       
@@ -47,7 +47,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <p className="text-xs md:text-sm font-bold text-brand-cyan uppercase tracking-[0.3em] mb-4">
             Our Core Services
@@ -62,7 +62,7 @@ export function ServicesSection() {
 
         {/* Services Grid - Properly aligned with max-width */}
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {siteConfig.services.map((service, index) => (
               <ServiceCard
                 key={index}
@@ -84,7 +84,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="mt-20 text-center"
+          className="mt-16 md:mt-20 text-center"
         >
           <p className="text-lg text-slate-600 mb-6">
             Not sure which service is right for you?
@@ -103,7 +103,7 @@ export function ServicesSection() {
 }
 
 const ServiceIcon3D = ({ icon: Icon, color }: { icon: LucideIcon, color: string }) => (
-  <div className="relative w-24 h-24 mb-6 perspective-1000 group-hover:scale-110 transition-transform duration-500 ease-out">
+  <div className="relative w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 mb-4 md:mb-6 perspective-1000 group-hover:scale-110 transition-transform duration-500 ease-out">
     {/* Back Layer - Dark Shadow */}
     <div className="absolute inset-0 bg-brand-dark/20 rounded-2xl transform rotate-6 scale-90 translate-y-2 blur-sm" />
     
@@ -117,7 +117,7 @@ const ServiceIcon3D = ({ icon: Icon, color }: { icon: LucideIcon, color: string 
       
       {/* The Icon */}
       <Icon 
-        className="relative w-10 h-10 text-brand-dark filter drop-shadow-md group-hover:text-brand-cyan transition-colors duration-300" 
+        className="relative w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 text-brand-dark filter drop-shadow-md group-hover:text-brand-cyan transition-colors duration-300" 
         strokeWidth={1.5}
       />
       
@@ -152,13 +152,13 @@ function ServiceCard({
         transition={{ delay, duration: 0.6, ease: "easeOut" }}
         className="group cursor-pointer h-full"
       >
-      <div className="relative h-full p-8 rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-brand-cyan/10 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 overflow-hidden flex flex-col items-center text-center">
+      <div className="relative h-full p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-brand-cyan/10 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 overflow-hidden flex flex-col items-center text-center">
         
         {/* Top Accent Bar - Brand Gradient */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-cyan to-brand-deep transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
 
         {/* Badge */}
-        <div className="relative mb-8">
+        <div className="relative mb-6 md:mb-8">
           <span className={`inline-block text-[10px] font-bold px-3 py-1 rounded-full ${badgeColors[badge]} shadow-sm uppercase tracking-wide`}>
             {badge}
           </span>
@@ -170,7 +170,7 @@ function ServiceCard({
         {/* Content Wrapper - Flex Grow to push button down */}
         <div className="relative flex-1 flex flex-col w-full">
           <div className="space-y-4 mb-4">
-            <h3 className="text-2xl font-bold text-brand-dark group-hover:text-brand-cyan transition-colors duration-300">
+            <h3 className="text-xl md:text-2xl font-bold text-brand-dark group-hover:text-brand-cyan transition-colors duration-300">
               {title}
             </h3>
             <p className="text-base text-slate-600 leading-relaxed font-medium">

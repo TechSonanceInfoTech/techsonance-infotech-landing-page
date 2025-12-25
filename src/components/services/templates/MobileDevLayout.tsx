@@ -40,58 +40,42 @@ export function MobileDevLayout({ service }: { service: ServiceData }) {
               </div>
             </div>
 
-            {/* Visual: CSS-Only Phone Mockup */}
-            <div className="flex-1 relative perspective-[1000px]">
-                <div className="relative mx-auto w-[280px] h-[580px] bg-[#0A1A2F] rounded-[3rem] border-8 border-slate-800 shadow-2xl shadow-cyan-500/10 transform rotate-y-[-10deg] rotate-x-[5deg] hover:rotate-0 transition-transform duration-700">
-                    {/* Notch */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-32 bg-slate-800 rounded-b-xl z-20"></div>
-                    
-                    {/* Screen Content */}
-                    <div className="h-full w-full bg-[#050f1e] rounded-[2.5rem] overflow-hidden relative flex flex-col">
-                        {/* Status Bar */}
-                        <div className="h-10 px-6 flex items-center justify-between text-[10px] text-white/50">
-                            <span>9:41</span>
-                            <div className="flex gap-1.5">
-                                <Wifi className="w-3 h-3" />
-                                <Battery className="w-3 h-3" />
-                            </div>
-                        </div>
-
-                        {/* App UI Header */}
-                        <div className="px-6 py-4">
-                            <div className="h-8 w-8 rounded-full bg-brand-cyan/20 mb-4 animate-pulse"></div>
-                            <div className="h-4 w-24 bg-slate-800 rounded mb-2"></div>
-                            <div className="h-8 w-40 bg-white/10 rounded"></div>
-                        </div>
-
-                        {/* App widgets */}
-                        <div className="px-4 space-y-3 flex-1 overflow-hidden">
-                            <div className="p-4 bg-gradient-to-br from-brand-cyan to-blue-600 rounded-2xl shadow-lg">
-                                <div className="h-2 w-12 bg-white/30 rounded mb-4"></div>
-                                <div className="flex justify-between items-end">
-                                    <div className="h-6 w-16 bg-white/50 rounded"></div>
-                                    <div className="h-8 w-8 bg-white/20 rounded-full"></div>
-                                </div>
-                            </div>
-                            <div className="p-4 bg-slate-900 rounded-2xl border border-white/5">
-                                <div className="flex gap-3 items-center mb-3">
-                                    <div className="h-10 w-10 bg-green-500/20 rounded-full flex items-center justify-center text-green-400">
-                                        <AppWindow className="w-5 h-5" />
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="h-3 w-20 bg-slate-700 rounded mb-1"></div>
-                                        <div className="h-2 w-12 bg-slate-800 rounded"></div>
-                                    </div>
-                                </div>
-                                <div className="h-20 w-full bg-slate-800/50 rounded-lg"></div>
-                            </div>
-                        </div>
+            {/* Visual: Mobile App Image - Enhanced */}
+            <div className="flex-1 relative">
+                {/* Decorative background elements */}
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/10 to-blue-500/10 rounded-full blur-3xl"></div>
+                
+                {/* Main image container with 3D effect */}
+                <div className="relative mx-auto max-w-md perspective-1000">
+                    <div className="relative transform hover:scale-105 transition-transform duration-500 ease-out">
+                        {/* Glow effect behind image */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/30 to-blue-500/30 rounded-3xl blur-2xl opacity-50 animate-pulse"></div>
                         
-                         {/* Bottom Bar */}
-                         <div className="h-12 border-t border-white/5 mx-4 flex items-center justify-around text-slate-600">
-                            <div className="w-8 h-1 rounded-full bg-white/20"></div>
-                         </div>
+                        {/* Main image */}
+                        <img 
+                            src="/mobile.jpg" 
+                            alt="Mobile App Development - iOS & Android Apps" 
+                            className="relative w-full h-auto rounded-3xl shadow-2xl shadow-cyan-500/30 border-4 border-white/10"
+                        />
+                        
+                        {/* Floating badge - Top right */}
+                        <div className="absolute -top-4 -right-4 bg-gradient-to-br from-brand-cyan to-blue-600 text-white px-4 py-2 rounded-full shadow-lg shadow-cyan-500/50 animate-bounce">
+                            <div className="flex items-center gap-2">
+                                <Smartphone className="w-4 h-4" />
+                                <span className="text-xs font-bold">Native Apps</span>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                
+                {/* Decorative dots pattern */}
+                <div className="absolute top-10 right-0 grid grid-cols-3 gap-2 opacity-20">
+                    <div className="w-2 h-2 bg-brand-cyan rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-cyan rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-cyan rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-cyan rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-cyan rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-cyan rounded-full"></div>
                 </div>
             </div>
 

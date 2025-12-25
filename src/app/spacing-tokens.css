@@ -1,0 +1,40 @@
+/**
+ * Spacing Tokens - 8px Grid System
+ * Mobile-first responsive spacing system
+ */
+
+:root {
+  /* Base spacing scale (8px grid) */
+  --spacing-1: 0.25rem;   /* 4px */
+  --spacing-2: 0.5rem;    /* 8px */
+  --spacing-3: 0.75rem;   /* 12px */
+  --spacing-4: 1rem;      /* 16px */
+  --spacing-6: 1.5rem;    /* 24px */
+  --spacing-8: 2rem;      /* 32px */
+  --spacing-10: 2.5rem;   /* 40px */
+  --spacing-12: 3rem;     /* 48px */
+  --spacing-16: 4rem;     /* 64px */
+  --spacing-20: 5rem;     /* 80px */
+  --spacing-24: 6rem;     /* 96px */
+  --spacing-32: 8rem;     /* 128px */
+
+  /* Container padding (responsive) */
+  --container-padding-mobile: 1rem;      /* 16px */
+  --container-padding-tablet: 1.5rem;    /* 24px */
+  --container-padding-desktop: 2rem;     /* 32px */
+
+  /* Section spacing (responsive) */
+  --section-spacing-mobile: 4rem;        /* 64px */
+  --section-spacing-tablet: 5rem;        /* 80px */
+  --section-spacing-desktop: 6rem;       /* 96px */
+
+  /* Component spacing */
+  --card-padding-mobile: 1.5rem;         /* 24px */
+  --card-padding-tablet: 2rem;           /* 32px */
+  --card-padding-desktop: 2.5rem;        /* 40px */
+
+  /* Gap spacing for grids/flex */
+  --gap-mobile: 1rem;                    /* 16px */
+  --gap-tablet: 1.5rem;                  /* 24px */
+  --gap-desktop: 2rem;                   /* 32px */
+}

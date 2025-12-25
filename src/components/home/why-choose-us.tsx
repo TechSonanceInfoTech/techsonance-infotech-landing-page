@@ -47,7 +47,7 @@ const features = [
 
 export function WhyChooseUs() {
   return (
-    <section className="relative w-full py-24 md:py-32 bg-white overflow-hidden">
+    <section className="relative w-full py-16 md:py-20 lg:py-24 xl:py-32 bg-white overflow-hidden">
       {/* Background Decor - Subtle Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       
@@ -62,7 +62,7 @@ export function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20 max-w-3xl mx-auto"
+          className="text-center mb-16 md:mb-20 max-w-3xl mx-auto"
         >
           <div className="flex items-center justify-center space-x-2 mb-4">
             <span className="h-px w-8 bg-brand-cyan/50" />
@@ -82,7 +82,7 @@ export function WhyChooseUs() {
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <FeatureCard
               key={index}
@@ -104,11 +104,11 @@ export function WhyChooseUs() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,194,255,0.2),transparent_50%)] z-0" />
             
             <div className="relative z-10">
-              <div className="w-16 h-16 mx-auto mb-6 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 group-hover:scale-110 transition-transform duration-300">
-                <CheckCircle2 className="w-8 h-8 text-brand-cyan" />
+              <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mx-auto mb-4 md:mb-6 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 group-hover:scale-110 transition-transform duration-300">
+                <CheckCircle2 className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-brand-cyan" />
               </div>
-              <h3 className="text-2xl font-bold mb-3">Ready to Start?</h3>
-              <p className="text-slate-300 mb-8 text-sm leading-relaxed">
+              <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3">Ready to Start?</h3>
+              <p className="text-slate-300 mb-6 md:mb-8 text-sm leading-relaxed">
                 Join the roadmap to digital transformation with a team that actually cares about your growth.
               </p>
               <button className="px-8 py-3 rounded-xl bg-white text-brand-dark font-bold hover:bg-brand-cyan hover:text-white transition-all duration-300 shadow-lg shadow-white/5 active:scale-95">
@@ -148,11 +148,11 @@ function FeatureCard({
       <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-brand-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       {/* Icon Container */}
-      <div className={`w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-        <Icon className="w-7 h-7 text-white" />
+      <div className={`w-12 h-12 md:w-14 md:h-14 mb-4 md:mb-6 rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+        <Icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
       </div>
 
-      <h3 className="text-xl font-bold text-brand-dark mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-dark group-hover:to-brand-cyan transition-all duration-300">
+      <h3 className="text-lg md:text-xl font-bold text-brand-dark mb-3 md:mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-dark group-hover:to-brand-cyan transition-all duration-300">
         {title}
       </h3>
       

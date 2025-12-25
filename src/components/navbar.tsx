@@ -37,10 +37,10 @@ export function Navbar() {
   return (
     <>
       <header className="fixed top-0 w-full z-50 border-b border-white/20 bg-white/80 backdrop-blur-md shadow-sm transition-all duration-300">
-        <div className="container flex h-20 items-center justify-between px-4 md:px-6 relative">
+        <div className="container flex h-16 md:h-20 items-center justify-between px-4 md:px-6 relative">
           <Link href="/" className="flex items-center gap-3 group">
             {/* Logo */}
-            <div className="relative w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 transition-transform duration-300 group-hover:scale-105">
               <img 
                 src="/logo.png" 
                 alt={`${siteConfig.name} Logo`} 
@@ -48,7 +48,7 @@ export function Navbar() {
               />
             </div>
             <div className="flex flex-col justify-center">
-              <span className="font-bold text-xl md:text-2xl tracking-tight text-slate-900 leading-none">
+              <span className="font-bold text-lg md:text-xl lg:text-2xl tracking-tight text-slate-900 leading-none">
                 TechSonance
               </span>
               <span className="text-xs md:text-sm font-medium text-slate-700 tracking-[0.2em] uppercase leading-none mt-1 group-hover:text-slate-900 transition-colors duration-300">
@@ -78,9 +78,8 @@ export function Navbar() {
                   />
                 </Link>
 
-                {/* Mega Menu Dropdown */}
                 {item.isMegaMenu && activeMegaMenu === item.label && (
-                   <div className="absolute top-full left-1/2 -translate-x-1/2 w-[900px] bg-white rounded-b-2xl shadow-2xl border-t-2 border-brand-cyan overflow-hidden p-8 grid grid-cols-4 gap-8 animate-in fade-in slide-in-from-top-2 duration-200">
+                   <div className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-5xl bg-white rounded-b-2xl shadow-2xl border-t-2 border-brand-cyan overflow-hidden p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
                       {hireDevelopersConfig.categories.map((cat) => {
                         const Icon = iconMap[cat.icon] || Layers
                         return (
@@ -118,8 +117,9 @@ export function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden p-2 text-slate-700 hover:text-brand-cyan transition-colors"
+            className="md:hidden p-2 text-slate-700 hover:text-brand-cyan transition-colors touch-target"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? <div className="w-6 h-6">✕</div> : <div className="w-6 h-6">☰</div>}
           </button>
@@ -127,25 +127,25 @@ export function Navbar() {
 
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-white/20 shadow-xl backdrop-blur-xl p-4 flex flex-col gap-4 animate-in slide-in-from-top-5 max-h-[85vh] overflow-y-auto">
+          <div className="md:hidden absolute top-16 md:top-20 left-0 w-full bg-white border-b border-white/20 shadow-xl backdrop-blur-xl p-4 md:p-6 flex flex-col gap-3 md:gap-4 animate-in slide-in-from-top-5 max-h-[85vh] overflow-y-auto">
             {siteConfig.navItems.filter((i: any) => i.label !== 'Home').map((item: any) => (
-              <div key={item.href} className="border-b border-slate-100 last:border-0 pb-2">
+              <div key={item.href} className="border-b border-slate-100 last:border-0 pb-3 md:pb-4">
                 {item.isMegaMenu ? (
                   <div className="space-y-2">
-                    <div className="text-lg font-medium text-slate-900 py-2">
+                    <div className="text-base md:text-lg font-medium text-slate-900 py-2 md:py-3">
                       {item.label}
                     </div>
                     {/* Mobile Accordion for Mega Menu */}
-                    <div className="pl-4 space-y-4">
+                    <div className="pl-3 md:pl-4 space-y-3 md:space-y-4">
                       {hireDevelopersConfig.categories.map((cat) => (
                          <div key={cat.title}>
                            <div className="text-sm font-bold text-brand-cyan mb-2 uppercase tracking-wider">{cat.title}</div>
-                           <div className="grid grid-cols-1 gap-2 border-l-2 border-brand-cyan/20 pl-3">
+                           <div className="grid grid-cols-1 gap-2 md:gap-3 border-l-2 border-brand-cyan/20 pl-2 md:pl-3">
                               {cat.items.map((subItem) => (
                                 <Link
                                    key={subItem.slug}
                                    href={`/hire/${subItem.slug}`}
-                                   className="text-sm text-slate-600 hover:text-brand-cyan"
+                                   className="text-sm md:text-base text-slate-600 hover:text-brand-cyan py-2 md:py-3 touch-target"
                                    onClick={() => setIsMenuOpen(false)}
                                 >
                                    {subItem.label.replace('Hire ', '')}
@@ -159,7 +159,7 @@ export function Navbar() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="block text-lg font-medium text-slate-700 hover:text-cyan-600 py-2"
+                    className="block text-base md:text-lg font-medium text-slate-700 hover:text-cyan-600 py-2 md:py-3 touch-target"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}

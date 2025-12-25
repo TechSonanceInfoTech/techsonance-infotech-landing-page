@@ -99,50 +99,50 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6">
       <div 
         className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" 
         onClick={onClose}
       />
       
-      <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 border border-white/20">
+      <div className="relative w-full max-w-4xl bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 border border-white/20">
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-slate-50 hover:bg-slate-100 transition-colors z-10 text-slate-400 hover:text-slate-600"
+          className="absolute top-3 right-3 md:top-4 md:right-4 p-2 rounded-full bg-slate-50 hover:bg-slate-100 transition-colors z-10 text-slate-400 hover:text-slate-600 touch-target"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4 md:w-5 md:h-5" />
         </button>
 
         {isSuccess ? (
-          <div className="flex flex-col items-center justify-center h-[500px] text-center p-8">
-            <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
-              <span className="text-4xl">✓</span>
+          <div className="flex flex-col items-center justify-center min-h-[400px] md:h-[500px] text-center p-6 md:p-8">
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 md:mb-6">
+              <span className="text-3xl md:text-4xl">✓</span>
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-2">Message Sent!</h2>
-            <p className="text-slate-500 text-lg">We'll get back to you within 24 hours.</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Message Sent!</h2>
+            <p className="text-slate-500 text-base md:text-lg">We'll get back to you within 24 hours.</p>
           </div>
         ) : (
           <div className="flex flex-col md:flex-row">
             {/* Form Section */}
-            <div className="flex-1 p-8 md:p-12">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <div className="flex-1 p-4 md:p-8 lg:p-12 pt-14 md:pt-8 lg:pt-12">
+              <div className="text-center mb-4 md:mb-6 lg:mb-8">
+                <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-2 md:mb-3 lg:mb-4 tracking-tight">
                   Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-deep">Amazing</span>
                 </h2>
-                <p className="text-slate-500 text-lg">
+                <p className="text-sm md:text-base lg:text-lg text-slate-500">
                   Connect with us for your requirements or queries. We'll get back to you within 24Hrs.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-8">
-                   <div className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4 lg:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 lg:gap-8">
+                   <div className="space-y-3 md:space-y-4 lg:space-y-5">
                       {/* Left Column Inputs */}
                       <div className="space-y-1">
                         <input
                           type="text"
                           placeholder="First Name"
-                          className={`w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all text-slate-900 placeholder:text-slate-400 ${
+                          className={`w-full px-3 py-2.5 md:px-4 md:py-3 lg:px-5 lg:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all text-slate-900 placeholder:text-slate-400 text-sm md:text-base ${
                             errors.firstName ? "ring-2 ring-red-100 border-red-200" : "focus:ring-brand-cyan/20 hover:border-brand-cyan/30"
                           }`}
                           value={formData.firstName}
@@ -155,7 +155,7 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         <input
                           type="text"
                           placeholder="Last Name"
-                          className={`w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all text-slate-900 placeholder:text-slate-400 ${
+                          className={`w-full px-3 py-2.5 md:px-4 md:py-3 lg:px-5 lg:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all text-slate-900 placeholder:text-slate-400 text-sm md:text-base ${
                             errors.lastName ? "ring-2 ring-red-100 border-red-200" : "focus:ring-brand-cyan/20 hover:border-brand-cyan/30"
                           }`}
                           value={formData.lastName}
@@ -168,7 +168,7 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         <input
                           type="email"
                           placeholder="Email Address"
-                          className={`w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all text-slate-900 placeholder:text-slate-400 ${
+                          className={`w-full px-3 py-2.5 md:px-4 md:py-3 lg:px-5 lg:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all text-slate-900 placeholder:text-slate-400 text-sm md:text-base ${
                             errors.email ? "ring-2 ring-red-100 border-red-200" : "focus:ring-brand-cyan/20 hover:border-brand-cyan/30"
                           }`}
                           value={formData.email}
@@ -182,7 +182,7 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                    <div className="space-y-1 h-full">
                       <textarea
                         placeholder="Tell us about your project..."
-                        className={`w-full h-full min-h-[200px] md:min-h-0 px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all text-slate-900 placeholder:text-slate-400 resize-none ${
+                        className={`w-full h-full min-h-[120px] md:min-h-[160px] lg:min-h-[200px] px-3 py-2.5 md:px-4 md:py-3 lg:px-5 lg:py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all text-slate-900 placeholder:text-slate-400 resize-none text-sm md:text-base ${
                           errors.description ? "ring-2 ring-red-100 border-red-200" : "focus:ring-brand-cyan/20 hover:border-brand-cyan/30"
                         }`}
                         value={formData.description}
@@ -192,11 +192,11 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                    </div>
                 </div>
 
-                <div className="flex flex-col items-center justify-between gap-4 pt-2">
+                <div className="flex flex-col items-center justify-between gap-2 md:gap-3 lg:gap-4 pt-1 md:pt-2">
                    <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full px-10 py-7 bg-gradient-to-r from-brand-cyan to-brand-deep text-white font-bold rounded-xl text-lg shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all duration-300"
+                    className="w-full px-6 py-3.5 md:px-8 md:py-5 lg:px-10 lg:py-7 bg-gradient-to-r from-brand-cyan to-brand-deep text-white font-bold rounded-xl text-sm md:text-base lg:text-lg shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all duration-300"
                    >
                      {isSubmitting ? (
                        <>
