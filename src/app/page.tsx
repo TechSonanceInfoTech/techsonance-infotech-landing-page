@@ -5,7 +5,6 @@ import { WhyChooseUs } from "@/components/home/why-choose-us";
 import { CaseStudies } from "@/components/home/case-studies";
 import { FAQSection } from "@/components/home/faq-section";
 import { ConsultancyForm } from "@/components/case-study/consultancy-form";
-import { Footer } from "@/components/footer";
 import { CheckCircle2, Sparkles } from "lucide-react";
 
 export default function Home() {

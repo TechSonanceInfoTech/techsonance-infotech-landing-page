@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation"
 import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
 import { ArrowRight, CheckCircle2, Layers, Server, ShieldCheck, Zap, BarChart3, Users, Clock, Globe, LockIcon, WifiOff, Sparkles } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -515,8 +514,6 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   )
 }
