@@ -3,7 +3,7 @@ import { Hero } from "@/components/hero/hero";
 import { ServicesSection } from "@/components/services/services-section";
 import { WhyChooseUs } from "@/components/home/why-choose-us";
 import { CaseStudies } from "@/components/home/case-studies";
-import { FAQSection } from "@/components/home/faq-section";
+import FAQWithSpiral from "@/components/ui/faq-section";
 import { ConsultancyForm } from "@/components/case-study/consultancy-form";
 import { CheckCircle2, Sparkles } from "lucide-react";
 
@@ -15,8 +15,7 @@ export default function Home() {
       <ServicesSection />
       <WhyChooseUs />
       <CaseStudies />
-      <FAQSection />
-
+      <FAQWithSpiral />
       {/* Contact Form Section */}
       <section id="consultancy-section" className="bg-white scroll-mt-16 md:scroll-mt-20 lg:scroll-mt-24">
         <div className="container mx-auto px-4 py-16 md:py-20">
@@ -24,7 +23,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 pointer-events-none" />
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Left Side: Content */}
-              <div className="p-6 md:p-10 lg:p-16 flex flex-col justify-center text-white relative lg:border-r border-white/10">
+              <div className="p-5 sm:p-6 md:p-10 lg:p-16 flex flex-col justify-center text-white relative lg:border-r border-white/10">
                 <div className="relative z-10">
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-cyan/20 rounded-full text-brand-cyan text-sm font-bold uppercase mb-8 border border-brand-cyan/30">
                     <Sparkles className="w-4 h-4" /> Ready to Build?
@@ -51,19 +50,19 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Right Side: Form */}
               <div className="p-6 md:p-10 lg:p-16 bg-slate-900/30">
-                 <div className="mb-10">
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-3 md:mb-4">Get A FREE Consultancy Today!</h2>
-                    <p className="text-slate-400 text-lg">Tell us about your project and get a custom roadmap.</p>
-                 </div>
-                 <ConsultancyForm />
+                <div className="mb-10">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-3 md:mb-4">Get A FREE Consultancy Today!</h2>
+                  <p className="text-slate-400 text-lg">Tell us about your project and get a custom roadmap.</p>
+                </div>
+                <ConsultancyForm />
               </div>
             </div>
           </div>
         </div>
       </section>
-      </main>
+    </main>
   );
 }

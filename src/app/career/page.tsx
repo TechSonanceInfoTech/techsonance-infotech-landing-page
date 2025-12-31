@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { 
+import {
   CheckCircle2, ArrowRight, Loader2, Upload, X, Briefcase, Home
 } from "lucide-react"
 import { useState, useTransition, useRef } from "react"
@@ -22,7 +22,7 @@ export default function CareerPage() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     setFileError('')
-    
+
     if (file) {
       // Validate file type
       if (file.type !== 'application/pdf') {
@@ -31,7 +31,7 @@ export default function CareerPage() {
         if (fileInputRef.current) fileInputRef.current.value = ''
         return
       }
-      
+
       // Validate file size (5MB)
       if (file.size > 5 * 1024 * 1024) {
         setFileError('File size must be less than 5MB')
@@ -39,7 +39,7 @@ export default function CareerPage() {
         if (fileInputRef.current) fileInputRef.current.value = ''
         return
       }
-      
+
       setSelectedFile(file)
     }
   }
@@ -52,36 +52,36 @@ export default function CareerPage() {
 
   async function handleSubmit(formData: FormData) {
     setFormStatus({ type: null, message: '' })
-    
+
     // Manually append the selected file to FormData since it's controlled by React state
     if (selectedFile) {
       formData.set('resume', selectedFile)
     }
-    
+
     startTransition(async () => {
-       const result = await submitJobApplication(formData)
-       
-       if (result.success) {
-         setFormStatus({ type: 'success', message: result.message })
-         const form = document.querySelector('form') as HTMLFormElement
-         form?.reset()
-         setSelectedFile(null)
-         setFileError('')
-       } else {
-         setFormStatus({ type: 'error', message: result.message })
-       }
+      const result = await submitJobApplication(formData)
+
+      if (result.success) {
+        setFormStatus({ type: 'success', message: result.message })
+        const form = document.querySelector('form') as HTMLFormElement
+        form?.reset()
+        setSelectedFile(null)
+        setFileError('')
+      } else {
+        setFormStatus({ type: 'error', message: result.message })
+      }
     })
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-gray-50 via-cyan-50/30 to-gray-50 pt-24 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
         <div className="absolute top-20 right-10 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl" />
         <div className="absolute bottom-10 left-10 w-80 h-80 bg-cyan-200/20 rounded-full blur-3xl" />
-        
+
         <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -100,7 +100,7 @@ export default function CareerPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
               {careerConfig.hero.title.split('With Us')[0]}<span className="text-brand-cyan">With Us</span>
             </h1>
-            
+
             <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
               {careerConfig.hero.subtitle}
             </p>
@@ -134,7 +134,7 @@ export default function CareerPage() {
             <div className="h-1 w-20 bg-brand-cyan mx-auto rounded-full" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
             {careerConfig.whyWorkWithUs.points.map((point, index) => (
               <WhyCard key={index} icon={point.icon} title={point.title} />
             ))}
@@ -154,9 +154,9 @@ export default function CareerPage() {
           </div>
 
           {/* Modern Grid Layout */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
             {careerConfig.lifeAtCompany.benefits.map((item, index) => (
-              <BenefitCard 
+              <BenefitCard
                 key={item.title}
                 icon={item.icon}
                 title={item.title}
@@ -182,9 +182,9 @@ export default function CareerPage() {
 
           <div className="grid grid-cols-1 gap-6">
             {careerConfig.openPositions.map((job, index) => (
-              <JobCard 
-                key={index} 
-                job={job} 
+              <JobCard
+                key={index}
+                job={job}
                 onApply={() => {
                   setSelectedJob(job.title)
                   document.getElementById('apply-section')?.scrollIntoView({ behavior: 'smooth' })
@@ -249,12 +249,12 @@ export default function CareerPage() {
                     <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                       Full Name <span className="text-red-500">*</span>
                     </label>
-                    <Input 
+                    <Input
                       id="name"
-                      name="name" 
-                      placeholder="John Doe" 
-                      className="h-12 focus:border-brand-cyan focus:ring-brand-cyan" 
-                      required 
+                      name="name"
+                      placeholder="John Doe"
+                      className="h-12 focus:border-brand-cyan focus:ring-brand-cyan"
+                      required
                     />
                   </div>
 
@@ -262,13 +262,13 @@ export default function CareerPage() {
                     <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                       Email <span className="text-red-500">*</span>
                     </label>
-                    <Input 
+                    <Input
                       id="email"
-                      name="email" 
+                      name="email"
                       type="email"
-                      placeholder="john@example.com" 
-                      className="h-12 focus:border-brand-cyan focus:ring-brand-cyan" 
-                      required 
+                      placeholder="john@example.com"
+                      className="h-12 focus:border-brand-cyan focus:ring-brand-cyan"
+                      required
                     />
                   </div>
 
@@ -277,11 +277,11 @@ export default function CareerPage() {
                       <label htmlFor="roleInterest" className="block text-sm font-semibold text-gray-700 mb-2">
                         Role Interested In
                       </label>
-                      <Input 
+                      <Input
                         id="roleInterest"
-                        name="role" 
-                        placeholder="e.g., Full Stack Developer" 
-                        className="h-12 focus:border-brand-cyan focus:ring-brand-cyan" 
+                        name="role"
+                        placeholder="e.g., Full Stack Developer"
+                        className="h-12 focus:border-brand-cyan focus:ring-brand-cyan"
                       />
                     </div>
                   )}
@@ -290,19 +290,19 @@ export default function CareerPage() {
                     <label htmlFor="resume" className="block text-sm font-semibold text-gray-700 mb-2">
                       Resume Upload (PDF)
                     </label>
-                    
+
                     {!selectedFile ? (
                       <label className="flex items-center justify-center gap-2 h-12 px-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-brand-cyan hover:bg-cyan-50/50 transition-colors">
                         <Upload className="w-5 h-5 text-gray-400" />
                         <span className="text-sm text-gray-600">Choose PDF file (max 5MB)</span>
-                        <input 
+                        <input
                           ref={fileInputRef}
                           id="resume"
-                          name="resume" 
-                          type="file" 
+                          name="resume"
+                          type="file"
                           accept=".pdf,application/pdf"
                           onChange={handleFileChange}
-                          className="hidden" 
+                          className="hidden"
                         />
                       </label>
                     ) : (
@@ -321,7 +321,7 @@ export default function CareerPage() {
                         </button>
                       </div>
                     )}
-                    
+
                     {fileError && (
                       <p className="text-sm text-red-600 mt-2">{fileError}</p>
                     )}
@@ -331,11 +331,11 @@ export default function CareerPage() {
                     <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                       Short Message
                     </label>
-                    <Textarea 
+                    <Textarea
                       id="message"
-                      name="message" 
-                      placeholder="Tell us about yourself and why you'd like to join our team..." 
-                      className="min-h-[120px] focus:border-brand-cyan focus:ring-brand-cyan" 
+                      name="message"
+                      placeholder="Tell us about yourself and why you'd like to join our team..."
+                      className="min-h-[120px] focus:border-brand-cyan focus:ring-brand-cyan"
                     />
                   </div>
 
@@ -345,7 +345,7 @@ export default function CareerPage() {
                     </div>
                   )}
 
-                  <Button 
+                  <Button
                     disabled={isPending}
                     className="w-full h-14 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-md transition-all duration-200"
                   >
@@ -376,13 +376,13 @@ export default function CareerPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {careerConfig.finalCTA.title}
             </h2>
-            
+
             <a href={careerConfig.finalCTA.href}>
               <Button className="px-10 py-6 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-1">
                 {careerConfig.finalCTA.buttonText}
               </Button>
             </a>
-            
+
             <p className="text-gray-300 mt-4 text-sm">
               {careerConfig.finalCTA.subtitle}
             </p>
@@ -437,7 +437,7 @@ function JobCard({ job, onApply }: { job: any, onApply: () => void }) {
             </span>
           </div>
         </div>
-        <Button 
+        <Button
           onClick={onApply}
           className="bg-brand-cyan hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap"
         >
@@ -472,7 +472,7 @@ function HiringStep({ number, title, description, isLast }: any) {
       </div>
       <h4 className="font-bold text-gray-900 mb-2">{title}</h4>
       <p className="text-sm text-gray-600">{description}</p>
-      
+
       {!isLast && (
         <ArrowRight className="hidden md:block absolute top-8 -right-8 w-6 h-6 text-brand-cyan/30" />
       )}

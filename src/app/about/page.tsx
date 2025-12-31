@@ -9,13 +9,13 @@ import Link from "next/link"
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-brand-dark via-brand-deep to-brand-dark text-white py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="absolute top-20 right-10 w-72 h-72 bg-brand-cyan/20 rounded-full blur-3xl" />
         <div className="absolute bottom-10 left-10 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl" />
-        
+
         <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -26,14 +26,14 @@ export default function AboutPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
               {aboutConfig.hero.headline}
             </h1>
-            
+
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
               {aboutConfig.hero.subheadline}
             </p>
 
             <div className="flex flex-wrap gap-3 justify-center">
               {aboutConfig.hero.highlights.map((highlight, index) => (
-                <span 
+                <span
                   key={index}
                   className="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm font-medium"
                 >
@@ -62,7 +62,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
             {aboutConfig.whoWeAre.keyTraits.map((trait, index) => (
               <TraitCard key={index} icon={trait.icon} title={trait.title} delay={index * 0.1} />
             ))}
@@ -89,7 +89,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {aboutConfig.whatWeDo.services.map((service, index) => (
-              <ServiceCard 
+              <ServiceCard
                 key={index}
                 icon={service.icon}
                 title={service.title}
@@ -118,7 +118,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {aboutConfig.howWeWork.steps.map((step, index) => (
-              <ProcessStep 
+              <ProcessStep
                 key={index}
                 number={step.number}
                 title={step.title}
@@ -226,14 +226,14 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               {aboutConfig.finalCTA.title}
             </h2>
-            
+
             <Link href={aboutConfig.finalCTA.href}>
               <Button className="px-10 py-6 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-1">
                 {aboutConfig.finalCTA.buttonText}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            
+
             <p className="text-gray-300 mt-6 text-lg">
               {aboutConfig.finalCTA.subtext}
             </p>
@@ -303,7 +303,7 @@ function ProcessStep({ number, title, description, isLast, delay }: { number: nu
         <h3 className="font-bold text-gray-900 mb-2 text-sm md:text-base">{title}</h3>
         <p className="text-gray-600 text-xs md:text-sm">{description}</p>
       </div>
-      
+
       {!isLast && (
         <div className="hidden md:block absolute top-7 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-brand-cyan to-cyan-200" />
       )}

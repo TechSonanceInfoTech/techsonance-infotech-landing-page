@@ -1,14 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { 
-  Rocket, 
-  Layout, 
-  Users, 
-  Wallet, 
-  Zap, 
+import {
+  Rocket,
+  Layout,
+  Users,
+  Wallet,
+  Zap,
   CheckCircle2,
-  LucideIcon 
+  LucideIcon
 } from "lucide-react"
 
 // Enhanced content for Techsonance Infotech LLP
@@ -47,42 +47,53 @@ const features = [
 
 export function WhyChooseUs() {
   return (
-    <section className="relative w-full py-16 md:py-20 lg:py-24 xl:py-32 bg-white overflow-hidden">
-      {/* Background Decor - Subtle Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      
-      {/* Background Decor - Gradient Blobs */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[40rem] h-[40rem] bg-brand-cyan/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-brand-deep/5 rounded-full blur-3xl" />
+    <section className="relative w-full py-20 md:py-24 lg:py-32 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
+      {/* Enhanced Background Decor */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:3rem_3rem]" />
 
-      <div className="container relative z-10 px-4 mx-auto">
-        {/* Header Section */}
+      {/* Animated Gradient Blobs */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[50rem] h-[50rem] bg-gradient-to-br from-brand-cyan/10 to-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[50rem] h-[50rem] bg-gradient-to-tr from-purple-500/10 to-brand-deep/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-gradient-to-r from-emerald-500/5 to-teal-500/5 rounded-full blur-3xl" />
+
+      <div className="container relative z-10 px-4 sm:px-6 md:px-8 mx-auto max-w-7xl">
+        {/* Premium Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 md:mb-20 max-w-3xl mx-auto"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 md:mb-20 max-w-4xl mx-auto"
         >
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <span className="h-px w-8 bg-brand-cyan/50" />
-            <span className="text-xs font-bold text-brand-cyan uppercase tracking-[0.2em]">
+          {/* Decorative Top Badge */}
+          <div className="inline-flex items-center justify-center gap-3 mb-6">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-brand-cyan" />
+            <span className="px-4 py-2 rounded-full bg-gradient-to-r from-brand-cyan/10 to-blue-500/10 border border-brand-cyan/20 text-xs font-bold text-brand-cyan uppercase tracking-[0.2em] backdrop-blur-sm">
               The Techsonance Advantage
             </span>
-            <span className="h-px w-8 bg-brand-cyan/50" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-brand-cyan" />
           </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-brand-dark mb-6 tracking-tight">
-            Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-deep">Techsonance?</span>
+
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-brand-dark mb-6 tracking-tight leading-tight">
+            Why Choose{' '}
+            <span className="relative inline-block">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-blue-500 to-brand-deep">
+                Techsonance?
+              </span>
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-brand-cyan via-blue-500 to-brand-deep rounded-full opacity-30" />
+            </span>
           </h2>
-          
-          <p className="text-lg text-slate-600 leading-relaxed">
-            We merge technical expertise with business intelligence to build digital products that scale, perform, and inspire.
+
+          <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
+            We merge technical expertise with business intelligence to build digital products that{' '}
+            <span className="font-semibold text-brand-dark">scale</span>,{' '}
+            <span className="font-semibold text-brand-dark">perform</span>, and{' '}
+            <span className="font-semibold text-brand-dark">inspire</span>.
           </p>
         </motion.div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+        {/* Premium Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 md:gap-8 mb-8">
           {features.map((feature, index) => (
             <FeatureCard
               key={index}
@@ -90,28 +101,35 @@ export function WhyChooseUs() {
               {...feature}
             />
           ))}
-          
-          {/* Detailed Call to Action Card (Fills the last slot nicely) */}
+
+          {/* Premium CTA Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="flex flex-col justify-center items-center p-8 rounded-3xl bg-brand-dark text-white text-center relative overflow-hidden group"
+            transition={{ delay: 0.6, duration: 0.6 }}
+            whileHover={{ scale: 1.02, y: -5 }}
+            className="relative flex flex-col justify-center items-center p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-brand-dark via-brand-deep to-brand-dark text-white text-center overflow-hidden group cursor-pointer shadow-2xl shadow-brand-dark/20"
           >
-            {/* Animated Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-deep to-brand-dark z-0" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,194,255,0.2),transparent_50%)] z-0" />
-            
+            {/* Animated Background Effects */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,194,255,0.3),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(139,92,246,0.2),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
+
             <div className="relative z-10">
-              <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mx-auto mb-4 md:mb-6 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 group-hover:scale-110 transition-transform duration-300">
-                <CheckCircle2 className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-brand-cyan" />
+              {/* Icon with Glow Effect */}
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan to-blue-500 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300" />
+                <div className="relative w-full h-full bg-gradient-to-br from-brand-cyan to-blue-500 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  <CheckCircle2 className="w-8 h-8 sm:w-9 sm:h-9 text-white" />
+                </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3">Ready to Start?</h3>
-              <p className="text-slate-300 mb-6 md:mb-8 text-sm leading-relaxed">
+
+              <h3 className="text-2xl sm:text-3xl font-bold mb-3">Ready to Start?</h3>
+              <p className="text-slate-300 mb-8 text-sm sm:text-base leading-relaxed max-w-xs mx-auto">
                 Join the roadmap to digital transformation with a team that actually cares about your growth.
               </p>
-              <button className="px-8 py-3 rounded-xl bg-white text-brand-dark font-bold hover:bg-brand-cyan hover:text-white transition-all duration-300 shadow-lg shadow-white/5 active:scale-95">
+              <button className="px-8 py-4 rounded-xl bg-white text-brand-dark font-bold hover:bg-brand-cyan hover:text-white transition-all duration-300 shadow-xl shadow-black/10 hover:shadow-brand-cyan/30 active:scale-95 group-hover:scale-105">
                 Let's Talk Business
               </button>
             </div>
@@ -122,13 +140,13 @@ export function WhyChooseUs() {
   )
 }
 
-function FeatureCard({ 
-  icon: Icon, 
-  title, 
-  description, 
+function FeatureCard({
+  icon: Icon,
+  title,
+  description,
   gradient,
-  index 
-}: { 
+  index
+}: {
   icon: LucideIcon
   title: string
   description: string
@@ -137,28 +155,42 @@ function FeatureCard({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={{ y: -5 }}
-      className="group relative h-full bg-slate-50 hover:bg-white rounded-3xl p-8 border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:shadow-xl hover:shadow-brand-cyan/5"
+      transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
+      whileHover={{ y: -8, scale: 1.02 }}
+      className="group relative h-full bg-white/80 backdrop-blur-sm hover:bg-white rounded-3xl p-8 sm:p-9 md:p-10 border-2 border-slate-100 hover:border-brand-cyan/30 transition-all duration-500 hover:shadow-2xl hover:shadow-brand-cyan/10"
     >
-      {/* Hover Gradient Border Effect */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-brand-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-      {/* Icon Container */}
-      <div className={`w-12 h-12 md:w-14 md:h-14 mb-4 md:mb-6 rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-        <Icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
+
+      <div className="relative z-10">
+        {/* Number Badge */}
+        <div className="absolute -top-4 -right-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-slate-100 to-white border-2 border-slate-200 rounded-2xl flex items-center justify-center font-bold text-slate-400 text-sm sm:text-base group-hover:border-brand-cyan/50 group-hover:text-brand-cyan transition-all duration-300 shadow-lg">
+          {String(index + 1).padStart(2, '0')}
+        </div>
+
+        {/* Premium Icon Container */}
+        <div className="relative mb-6">
+          {/* Icon Box */}
+          <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-brand-cyan/10 flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+            <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-brand-cyan" />
+          </div>
+        </div>
+
+        {/* Title with Gradient Hover Effect */}
+        <h3 className="text-xl sm:text-2xl font-bold text-brand-dark mb-4 leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-dark group-hover:via-brand-cyan group-hover:to-brand-deep transition-all duration-300">
+          {title}
+        </h3>
+
+        {/* Description */}
+        <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+          {description}
+        </p>
+
+        {/* Bottom Accent Line */}
+        <div className="absolute bottom-0 left-8 right-8 h-1 bg-gradient-to-r from-transparent via-brand-cyan to-transparent rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
       </div>
-
-      <h3 className="text-lg md:text-xl font-bold text-brand-dark mb-3 md:mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-dark group-hover:to-brand-cyan transition-all duration-300">
-        {title}
-      </h3>
-      
-      <p className="text-slate-600 leading-relaxed text-[15px]">
-        {description}
-      </p>
     </motion.div>
   )
 }

@@ -16,28 +16,28 @@ export default function ContactPage() {
   async function handleSubmit(formData: FormData) {
     setFormStatus({ type: null, message: '' })
     startTransition(async () => {
-       const result = await sendContactEmail(formData)
-       
-       if (result.success) {
-         setFormStatus({ type: 'success', message: contactConfig.form.successMessage })
-         // Reset form
-         const form = document.querySelector('form') as HTMLFormElement
-         form?.reset()
-       } else {
-         setFormStatus({ type: 'error', message: result.message || 'Something went wrong. Please try again.' })
-       }
+      const result = await sendContactEmail(formData)
+
+      if (result.success) {
+        setFormStatus({ type: 'success', message: contactConfig.form.successMessage })
+        // Reset form
+        const form = document.querySelector('form') as HTMLFormElement
+        form?.reset()
+      } else {
+        setFormStatus({ type: 'error', message: result.message || 'Something went wrong. Please try again.' })
+      }
     })
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-brand-dark via-brand-deep to-brand-dark text-white py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="absolute top-20 right-10 w-72 h-72 bg-brand-cyan/20 rounded-full blur-3xl" />
         <div className="absolute bottom-10 left-10 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl" />
-        
+
         <div className="container mx-auto px-4 md:px-6 max-w-4xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ export default function ContactPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
               {contactConfig.hero.title.split('Powerful Together')[0]}<span className="text-brand-cyan">Powerful Together</span>
             </h1>
-            
+
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
               {contactConfig.hero.subtitle}
             </p>
@@ -73,7 +73,7 @@ export default function ContactPage() {
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            
+
             {/* Left Column: Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -81,9 +81,9 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
               id="contact-form"
             >
-              <div className="bg-white p-8 md:p-10 rounded-2xl shadow-xl">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">{contactConfig.form.title}</h2>
-                <p className="text-gray-600 mb-8">
+              <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-xl">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">{contactConfig.form.title}</h2>
+                <p className="text-gray-600 mb-6 sm:mb-8">
                   {contactConfig.form.description}
                 </p>
 
@@ -101,12 +101,12 @@ export default function ContactPage() {
                       <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                         Full Name <span className="text-red-500">*</span>
                       </label>
-                      <Input 
+                      <Input
                         id="name"
-                        name="name" 
-                        placeholder="John Doe" 
-                        className="h-12 focus:border-brand-cyan focus:ring-brand-cyan" 
-                        required 
+                        name="name"
+                        placeholder="John Doe"
+                        className="h-12 focus:border-brand-cyan focus:ring-brand-cyan"
+                        required
                       />
                     </div>
 
@@ -114,13 +114,13 @@ export default function ContactPage() {
                       <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                         Work Email <span className="text-red-500">*</span>
                       </label>
-                      <Input 
+                      <Input
                         id="email"
-                        name="email" 
+                        name="email"
                         type="email"
-                        placeholder="john@company.com" 
-                        className="h-12 focus:border-brand-cyan focus:ring-brand-cyan" 
-                        required 
+                        placeholder="john@company.com"
+                        className="h-12 focus:border-brand-cyan focus:ring-brand-cyan"
+                        required
                       />
                     </div>
 
@@ -128,11 +128,11 @@ export default function ContactPage() {
                       <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-2">
                         Company Name <span className="text-gray-400">(optional)</span>
                       </label>
-                      <Input 
+                      <Input
                         id="company"
-                        name="company" 
-                        placeholder="Your Company" 
-                        className="h-12 focus:border-brand-cyan focus:ring-brand-cyan" 
+                        name="company"
+                        placeholder="Your Company"
+                        className="h-12 focus:border-brand-cyan focus:ring-brand-cyan"
                       />
                     </div>
 
@@ -140,11 +140,11 @@ export default function ContactPage() {
                       <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
                         Phone / WhatsApp
                       </label>
-                      <Input 
+                      <Input
                         id="phone"
-                        name="phone" 
-                        placeholder="+91 XXXXX XXXXX" 
-                        className="h-12 focus:border-brand-cyan focus:ring-brand-cyan" 
+                        name="phone"
+                        placeholder="+91 XXXXX XXXXX"
+                        className="h-12 focus:border-brand-cyan focus:ring-brand-cyan"
                       />
                     </div>
 
@@ -152,7 +152,7 @@ export default function ContactPage() {
                       <label htmlFor="projectType" className="block text-sm font-semibold text-gray-700 mb-2">
                         Project Type
                       </label>
-                      <select 
+                      <select
                         id="projectType"
                         name="service"
                         className="w-full h-12 px-3 border border-gray-200 rounded-md focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan focus:outline-none"
@@ -171,12 +171,12 @@ export default function ContactPage() {
                       <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                         Message / Project Brief <span className="text-red-500">*</span>
                       </label>
-                      <Textarea 
+                      <Textarea
                         id="message"
-                        name="message" 
-                        placeholder="Tell us about your project, timeline, and any specific requirements..." 
-                        className="min-h-[140px] focus:border-brand-cyan focus:ring-brand-cyan" 
-                        required 
+                        name="message"
+                        placeholder="Tell us about your project, timeline, and any specific requirements..."
+                        className="min-h-[140px] focus:border-brand-cyan focus:ring-brand-cyan"
+                        required
                       />
                     </div>
 
@@ -186,7 +186,7 @@ export default function ContactPage() {
                       </div>
                     )}
 
-                    <Button 
+                    <Button
                       disabled={isPending}
                       className="w-full h-14 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-md transition-all duration-200"
                     >
@@ -217,9 +217,9 @@ export default function ContactPage() {
               className="space-y-8"
             >
               {/* Alternative Contact Options */}
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">{contactConfig.contactOptions.title}</h3>
-                
+              <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">{contactConfig.contactOptions.title}</h3>
+
                 <div className="space-y-5">
                   {contactConfig.contactOptions.options.map((option, index) => (
                     <ContactOption
@@ -234,9 +234,9 @@ export default function ContactPage() {
               </div>
 
               {/* Why Contact Us */}
-              <div className="bg-gradient-to-br from-brand-cyan/5 to-cyan-50/50 p-8 rounded-2xl border border-brand-cyan/20">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">{contactConfig.whyChooseUs.title}</h3>
-                
+              <div className="bg-gradient-to-br from-brand-cyan/5 to-cyan-50/50 p-6 sm:p-8 rounded-2xl border border-brand-cyan/20">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">{contactConfig.whyChooseUs.title}</h3>
+
                 <div className="space-y-4">
                   {contactConfig.whyChooseUs.points.map((point, index) => (
                     <WhyItem key={index} text={point} />
@@ -260,13 +260,13 @@ export default function ContactPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {contactConfig.finalCTA.title}
             </h2>
-            
+
             <a href={contactConfig.finalCTA.href}>
               <Button className="px-10 py-6 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-1">
                 {contactConfig.finalCTA.buttonText}
               </Button>
             </a>
-            
+
             <p className="text-gray-400 mt-4 text-sm">
               {contactConfig.finalCTA.subtext}
             </p>

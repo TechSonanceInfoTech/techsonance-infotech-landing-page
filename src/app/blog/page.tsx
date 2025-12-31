@@ -10,18 +10,18 @@ import Image from "next/image"
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All")
 
-  const filteredPosts = selectedCategory === "All" 
-    ? blogPosts 
+  const filteredPosts = selectedCategory === "All"
+    ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory)
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-brand-dark via-brand-deep to-brand-dark text-white py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="absolute top-10 right-10 w-72 h-72 bg-brand-cyan/20 rounded-full blur-3xl" />
-        
+
         <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ export default function BlogPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
               Our Blog
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
               Explore articles on technology, development, business, and best practices
             </p>
@@ -58,11 +58,10 @@ export default function BlogPage() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
-                    selectedCategory === category
+                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${selectedCategory === category
                       ? 'bg-brand-cyan text-white shadow-lg shadow-brand-cyan/30'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                    }`}
                 >
                   {category}
                 </button>
@@ -75,7 +74,7 @@ export default function BlogPage() {
       {/* Blog Grid */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 md:gap-8">
             {filteredPosts.map((post, index) => (
               <BlogCard key={post.slug} post={post} delay={index * 0.1} />
             ))}
@@ -114,7 +113,7 @@ function BlogCard({ post, delay }: { post: any, delay: number }) {
               className="object-cover group-hover:scale-105 transition-transform duration-300"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-            
+
             {/* Category Badge */}
             <div className="absolute top-4 left-4 z-10">
               <span className="px-4 py-2 bg-brand-cyan text-white text-sm font-semibold rounded-lg shadow-lg">
