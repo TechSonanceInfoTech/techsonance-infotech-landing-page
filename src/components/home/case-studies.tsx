@@ -57,7 +57,7 @@ export function CaseStudies() {
             <span className="text-brand-cyan font-bold tracking-wider uppercase text-sm mb-4 block">
               Proprietary Enterprise Solutions
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-dark mb-4 sm:mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-dark mb-4 sm:mb-6 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-brand-cyan hover:to-brand-deep transition-all duration-300 cursor-default bg-[length:200%_auto] hover:bg-right">
               Engineering Excellence
             </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">

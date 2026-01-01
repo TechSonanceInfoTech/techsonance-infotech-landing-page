@@ -179,7 +179,7 @@ function FeatureCard({
         </div>
 
         {/* Title with Gradient Hover Effect */}
-        <h3 className="text-xl sm:text-2xl font-bold text-brand-dark mb-4 leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-dark group-hover:via-brand-cyan group-hover:to-brand-deep transition-all duration-300">
+        <h3 className="text-xl sm:text-2xl font-bold text-brand-dark mb-4 leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-cyan group-hover:to-brand-deep transition-all duration-300">
           {title}
         </h3>
 

@@ -33,10 +33,15 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gray-50">
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-brand-dark via-brand-deep to-brand-dark text-white py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        <div className="absolute top-20 right-10 w-72 h-72 bg-brand-cyan/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl" />
+      <section className="relative bg-brand-dark text-white py-20 md:py-28 overflow-hidden">
+        {/* Background Layers */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[url('/contact_hero_bg.png')] bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/80 to-brand-dark/95" />
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10 mix-blend-overlay" />
+        </div>
+        <div className="absolute top-20 right-10 w-72 h-72 bg-brand-cyan/20 rounded-full blur-3xl z-0" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl z-0" />
 
         <div className="container mx-auto px-4 md:px-6 max-w-4xl relative z-10">
           <motion.div
@@ -46,7 +51,7 @@ export default function ContactPage() {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              {contactConfig.hero.title.split('Powerful Together')[0]}<span className="text-brand-cyan">Powerful Together</span>
+              {contactConfig.hero.title.split('Powerful Together')[0]}<span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-deep">Powerful Together</span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -55,7 +60,7 @@ export default function ContactPage() {
 
             <div className="flex flex-wrap gap-4 justify-center">
               <a href={contactConfig.hero.primaryCTA.href}>
-                <Button className="px-8 py-6 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-lg transition-all duration-200">
+                <Button className="px-8 py-6 bg-gradient-to-r from-brand-cyan to-brand-deep hover:scale-105 transition-all duration-300 shadow-lg shadow-cyan-500/20 text-white font-semibold text-lg rounded-lg">
                   {contactConfig.hero.primaryCTA.text}
                 </Button>
               </a>
@@ -188,7 +193,7 @@ export default function ContactPage() {
 
                     <Button
                       disabled={isPending}
-                      className="w-full h-14 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-md transition-all duration-200"
+                      className="w-full h-14 bg-gradient-to-r from-brand-cyan to-brand-deep hover:scale-105 transition-all duration-300 shadow-md shadow-cyan-500/20 text-white font-semibold text-lg rounded-lg"
                     >
                       {isPending ? (
                         <>
@@ -246,11 +251,11 @@ export default function ContactPage() {
             </motion.div>
 
           </div>
-        </div>
-      </section>
+        </div >
+      </section >
 
       {/* Final CTA Strip */}
-      <section className="py-16 bg-gradient-to-r from-brand-dark to-brand-deep text-white">
+      < section className="py-16 bg-gradient-to-r from-brand-dark to-brand-deep text-white" >
         <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -262,7 +267,7 @@ export default function ContactPage() {
             </h2>
 
             <a href={contactConfig.finalCTA.href}>
-              <Button className="px-10 py-6 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-1">
+              <Button className="px-10 py-6 bg-gradient-to-r from-brand-cyan to-brand-deep hover:scale-105 transition-all duration-300 shadow-lg shadow-cyan-500/20 text-white font-semibold text-lg rounded-lg">
                 {contactConfig.finalCTA.buttonText}
               </Button>
             </a>
@@ -272,9 +277,9 @@ export default function ContactPage() {
             </p>
           </motion.div>
         </div>
-      </section>
+      </section >
 
-    </div>
+    </div >
   )
 }
 

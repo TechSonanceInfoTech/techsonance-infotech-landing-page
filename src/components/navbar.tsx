@@ -66,17 +66,29 @@ export function Navbar() {
                 onMouseEnter={() => item.isMegaMenu && handleMouseEnter(item.label)}
                 onMouseLeave={handleMouseLeave}
               >
-                <Link
-                  href={item.href}
-                  className={`text-sm font-medium transition-colors relative group flex items-center gap-1
-                    ${pathname === item.href ? "text-brand-cyan" : "text-slate-700 hover:text-cyan-600"}`}
-                >
-                  {item.label}
-                  {item.isMegaMenu && <ChevronDown className="w-4 h-4 mt-0.5 group-hover:rotate-180 transition-transform duration-300" />}
-                  <span className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-brand-cyan to-brand-deep transition-all duration-300 
-                    ${pathname === item.href ? "w-full" : "w-0 group-hover:w-full"}`}
-                  />
-                </Link>
+                {item.isMegaMenu ? (
+                  <button
+                    className={`text-sm font-medium transition-colors relative group flex items-center gap-1 cursor-default
+                      ${activeMegaMenu === item.label ? "text-brand-cyan" : "text-slate-700 hover:text-cyan-600"}`}
+                  >
+                    {item.label}
+                    <ChevronDown className="w-4 h-4 mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
+                    <span className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-brand-cyan to-brand-deep transition-all duration-300 
+                      ${activeMegaMenu === item.label ? "w-full" : "w-0 group-hover:w-full"}`}
+                    />
+                  </button>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={`text-sm font-medium transition-colors relative group flex items-center gap-1
+                      ${pathname === item.href ? "text-brand-cyan" : "text-slate-700 hover:text-cyan-600"}`}
+                  >
+                    {item.label}
+                    <span className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-brand-cyan to-brand-deep transition-all duration-300 
+                      ${pathname === item.href ? "w-full" : "w-0 group-hover:w-full"}`}
+                    />
+                  </Link>
+                )}
 
                 {item.isMegaMenu && activeMegaMenu === item.label && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 w-screen max-w-5xl bg-white rounded-b-2xl shadow-2xl border-t-2 border-brand-cyan overflow-hidden p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 animate-in fade-in slide-in-from-top-2 duration-200 z-50">

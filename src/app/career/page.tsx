@@ -77,10 +77,15 @@ export default function CareerPage() {
     <div className="min-h-screen bg-gray-50">
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-50 via-cyan-50/30 to-gray-50 pt-24 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
-        <div className="absolute top-20 right-10 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-cyan-200/20 rounded-full blur-3xl" />
+      <section className="relative bg-brand-dark pt-24 pb-20 overflow-hidden">
+        {/* Background Layers */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[url('/career_hero_bg.png')] bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/80 to-brand-dark/95" />
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10 mix-blend-overlay" />
+        </div>
+        <div className="absolute top-20 right-10 w-96 h-96 bg-brand-cyan/20 rounded-full blur-3xl z-0" />
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-cyan-200/10 rounded-full blur-3xl z-0" />
 
         <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
           <motion.div
@@ -89,7 +94,7 @@ export default function CareerPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-brand-cyan/20 text-brand-cyan font-semibold text-sm mb-6 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-brand-cyan/20 text-brand-cyan font-semibold text-sm mb-6 shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan"></span>
@@ -97,22 +102,22 @@ export default function CareerPage() {
               {careerConfig.hero.badge}
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-              {careerConfig.hero.title.split('With Us')[0]}<span className="text-brand-cyan">With Us</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+              {careerConfig.hero.title.split('With Us')[0]}<span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-deep">With Us</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
               {careerConfig.hero.subtitle}
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center">
               <a href={careerConfig.hero.primaryCTA.href}>
-                <Button className="px-8 py-6 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-lg transition-all duration-200">
+                <Button className="px-8 py-6 bg-gradient-to-r from-brand-cyan to-brand-deep hover:scale-105 transition-all duration-300 shadow-lg shadow-cyan-500/20 text-white font-semibold text-lg rounded-lg">
                   {careerConfig.hero.primaryCTA.text}
                 </Button>
               </a>
               <a href={careerConfig.hero.secondaryCTA.href}>
-                <Button className="px-8 py-6 bg-white hover:bg-gray-50 text-brand-cyan border-2 border-brand-cyan font-semibold text-lg rounded-lg transition-all duration-200">
+                <Button className="px-8 py-6 bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm font-semibold text-lg rounded-lg transition-all duration-200">
                   {careerConfig.hero.secondaryCTA.text}
                 </Button>
               </a>
@@ -347,7 +352,7 @@ export default function CareerPage() {
 
                   <Button
                     disabled={isPending}
-                    className="w-full h-14 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-md transition-all duration-200"
+                    className="w-full h-14 bg-gradient-to-r from-brand-cyan to-brand-deep hover:scale-105 transition-all duration-300 shadow-md shadow-cyan-500/20 text-white font-semibold text-lg rounded-lg"
                   >
                     {isPending ? (
                       <>
@@ -363,10 +368,10 @@ export default function CareerPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section >
 
       {/* Final CTA */}
-      <section className="py-16 bg-gradient-to-r from-brand-dark to-brand-deep text-white">
+      < section className="py-16 bg-gradient-to-r from-brand-dark to-brand-deep text-white" >
         <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -378,7 +383,7 @@ export default function CareerPage() {
             </h2>
 
             <a href={careerConfig.finalCTA.href}>
-              <Button className="px-10 py-6 bg-brand-cyan hover:bg-cyan-600 text-white font-semibold text-lg rounded-lg shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-1">
+              <Button className="px-10 py-6 bg-gradient-to-r from-brand-cyan to-brand-deep hover:scale-105 transition-all duration-300 shadow-lg shadow-cyan-500/20 text-white font-semibold text-lg rounded-lg">
                 {careerConfig.finalCTA.buttonText}
               </Button>
             </a>
@@ -388,9 +393,9 @@ export default function CareerPage() {
             </p>
           </motion.div>
         </div>
-      </section>
+      </section >
 
-    </div>
+    </div >
   )
 }
 
@@ -438,8 +443,7 @@ function JobCard({ job, onApply }: { job: any, onApply: () => void }) {
           </div>
         </div>
         <Button
-          onClick={onApply}
-          className="bg-brand-cyan hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap"
+          className="bg-gradient-to-r from-brand-cyan to-brand-deep hover:scale-105 transition-all duration-300 shadow-md shadow-cyan-500/20 text-white font-semibold px-6 py-3 rounded-lg whitespace-nowrap"
         >
           Apply Now
         </Button>
@@ -493,7 +497,7 @@ function BenefitCard({ icon: Icon, title, delay }: { icon: any, title: string, d
         <div className="w-14 h-14 bg-gradient-to-br from-brand-cyan/10 to-cyan-50 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
           <Icon className="w-7 h-7 text-brand-cyan" />
         </div>
-        <h4 className="text-gray-900 font-semibold text-sm leading-tight">{title}</h4>
+        <h4 className="text-gray-900 font-semibold text-sm leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-cyan group-hover:to-brand-deep transition-all duration-300">{title}</h4>
       </div>
     </motion.div>
   )

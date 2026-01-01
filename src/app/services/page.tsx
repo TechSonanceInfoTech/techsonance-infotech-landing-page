@@ -63,7 +63,7 @@ export default function ServicesPage() {
               </div>
 
               <Link href={servicesConfig.hero.ctaHref}>
-                <Button className="px-8 py-6 bg-brand-cyan hover:bg-cyan-600 text-white font-bold text-lg rounded-xl shadow-2xl transition-all duration-200 hover:shadow-cyan-500/50 hover:scale-105">
+                <Button className="px-8 py-6 bg-gradient-to-r from-brand-cyan to-brand-deep hover:scale-105 transition-all duration-300 shadow-lg shadow-cyan-500/20 text-white font-bold text-lg rounded-xl">
                   {servicesConfig.hero.ctaText}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
