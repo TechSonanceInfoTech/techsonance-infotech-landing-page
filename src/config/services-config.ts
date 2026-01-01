@@ -1,4 +1,4 @@
-import { 
+import {
   Globe, Smartphone, Code2, Rocket, Cpu, Plug, Wrench,
   CheckCircle2, Users, Target, Shield, MessageSquare, Zap
 } from "lucide-react"
@@ -17,46 +17,40 @@ export const servicesConfig = {
     intro: "We offer end-to-end software development services tailored to your business goals.",
     services: [
       {
-        id: "web",
+        id: "web-development",
         icon: Globe,
         name: "Web Application Development",
         value: "Fast, secure, and scalable web solutions"
       },
       {
-        id: "mobile",
+        id: "mobile-development",
         icon: Smartphone,
         name: "Mobile App Development",
         value: "User-friendly apps for iOS and Android"
       },
       {
-        id: "fullstack",
+        id: "cloud-devops",
         icon: Code2,
-        name: "Full-Stack Development",
-        value: "Complete end-to-end development"
+        name: "Cloud & DevOps Solutions",
+        value: "Scale effortlessly with automated infrastructure"
       },
       {
-        id: "saas",
+        id: "data-analytics",
         icon: Rocket,
-        name: "SaaS & MVP Development",
-        value: "From idea to launch in weeks"
+        name: "Data Analytics & Insights",
+        value: "Turn raw data into strategic decisions"
       },
       {
-        id: "ai",
+        id: "ecommerce",
         icon: Cpu,
-        name: "AI & Workflow Automation",
-        value: "Intelligent automation solutions"
+        name: "E-Commerce Development",
+        value: "Complete payment integration & conversion design"
       },
       {
-        id: "api",
+        id: "hire-developers",
         icon: Plug,
-        name: "API Development & Integration",
-        value: "Seamless system connections"
-      },
-      {
-        id: "maintenance",
-        icon: Wrench,
-        name: "Maintenance & Support",
-        value: "Ongoing care for your product"
+        name: "Hire Dedicated Developers",
+        value: "Build your dream team with senior developers"
       }
     ]
   },

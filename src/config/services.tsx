@@ -24,6 +24,7 @@ export interface ServiceData {
     challenge: string;
     solution: string;
     results: string[];
+    image?: string;
   };
   layoutStyle?: "minimal-architect" | "interactive-showcase" | "glass-infrastructure" | "bento-grid" | "conversion-funnel" | "talent-cards";
 }
@@ -65,15 +66,17 @@ export const servicesData: Record<string, ServiceData> = {
       { step: "04", title: "Launch", description: "Seamless deployment with CI/CD pipelines and monitoring." }
     ],
     caseStudy: {
-      title: "FinTech Dashboard Overhaul",
-      clientIndustry: "Financial Services",
-      challenge: "A legacy financial portal was suffering from 8-second load times and poor mobile responsiveness, causing a 40% drop-off rate.",
-      solution: "We re-architected the frontend using Next.js and implemented server-side rendering. We optimized data fetching strategies and revamped the UI for mobile-first interactions.",
+      title: "Custom Modular POS System (PWA)",
+      clientIndustry: "Fintech & Hospitality",
+      challenge: "Most POS solutions force small businesses to pay for complex features they'll never use, making software expensive ($200+/mo) and slow. Worse, they're cloud-reliant—if internet flickers during rush hour, the entire system freezes.",
+      solution: "We built a PWA with Offline-First architecture and a Feature-Flagged modular engine. Businesses toggle features ON/OFF, loading only what they need. Using PouchDB (local) syncing to CouchDB (cloud), orders save locally first—if internet dies, the app continues processing orders seamlessly.",
       results: [
-        "Reduced load time to under 1.2 seconds",
-        "Increased mobile conversion by 65%",
-        "Secured SOC2 compliance readiness"
-      ]
+        "100% Uptime Guarantee with Offline Mode",
+        "40% Reduction in Monthly Software Costs",
+        "Sub-60s Order Velocity for complex orders",
+        "Zero Hardware Lock-in (BYOD - Bring Your Own Device)"
+      ],
+      image: "/pos-laptop.png"
     }
   },
   "mobile-development": {
@@ -87,7 +90,7 @@ export const servicesData: Record<string, ServiceData> = {
       {
         title: "Cross-Platform Efficiency",
         description: "One codebase, two platforms. Save time and budget without compromising that native feel.",
-        icon:  Smartphone,
+        icon: Smartphone,
       },
       {
         title: "Offline-First Mode",
@@ -134,7 +137,7 @@ export const servicesData: Record<string, ServiceData> = {
       {
         title: "Cost-Effective Scaling",
         description: "We optimize for unused resources and implement spot instances to ensure your infrastructure scales with your budget, not against it.",
-        icon:  Code2,
+        icon: Code2,
       },
       {
         title: "Business Agility",
@@ -181,7 +184,7 @@ export const servicesData: Record<string, ServiceData> = {
       {
         title: "Informed Decision Making",
         description: "Eliminate guesswork. Our analytics solutions provide real-time insights for confident, data-driven strategy.",
-        icon:  BarChart3,
+        icon: BarChart3,
       },
       {
         title: "Operational Efficiency",
@@ -228,7 +231,7 @@ export const servicesData: Record<string, ServiceData> = {
       {
         title: "Headless Commerce",
         description: "Decoupled frontend for ultimate page speed and unlimited design flexibility.",
-        icon:  Code2,
+        icon: Code2,
       },
       {
         title: "Payment Integration",
@@ -275,7 +278,7 @@ export const servicesData: Record<string, ServiceData> = {
       {
         title: "Top 1% Talent",
         description: " rigorous technical and communication vetting. Only the best make the cut.",
-        icon:  Users,
+        icon: Users,
       },
       {
         title: "Seamless Integration",

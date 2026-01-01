@@ -59,7 +59,7 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex gap-8 items-center h-full">
-            {siteConfig.navItems.filter((i: any) => i.label !== 'Home').map((item: any) => (
+            {siteConfig.navItems.map((item: any) => (
               <div
                 key={item.href}
                 className="relative h-full flex items-center"
@@ -128,7 +128,7 @@ export function Navbar() {
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 md:top-20 left-0 w-full bg-white border-b border-white/20 shadow-xl backdrop-blur-xl px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 flex flex-col gap-2 sm:gap-3 md:gap-4 animate-in slide-in-from-top-5 max-h-[calc(100vh-4rem)] overflow-y-auto">
-            {siteConfig.navItems.filter((i: any) => i.label !== 'Home').map((item: any) => (
+            {siteConfig.navItems.map((item: any) => (
               <div key={item.href} className="border-b border-slate-100 last:border-0 pb-2 sm:pb-3 md:pb-4">
                 {item.isMegaMenu ? (
                   <div className="space-y-2">

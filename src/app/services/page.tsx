@@ -12,6 +12,10 @@ export default function ServicesPage() {
 
       {/* Hero Section - Enhanced with Interactive Visuals */}
       <section className="relative bg-gradient-to-br from-brand-dark via-brand-deep to-brand-dark text-white py-20 md:py-28 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 bg-[url('/services-hero-bg.png')] bg-cover bg-center opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/80 via-brand-deep/80 to-brand-dark/80" />
+
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="absolute top-20 right-10 w-96 h-96 bg-brand-cyan/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-10 left-10 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />

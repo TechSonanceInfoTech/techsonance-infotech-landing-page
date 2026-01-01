@@ -4,6 +4,7 @@ export const siteConfig = {
   navItems: [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
+    { label: "Portfolio", href: "/portfolio" },
     { label: "Hire Developers", href: "/hire", isMegaMenu: true }, // Added Mega Menu Trigger
     { label: "About", href: "/about" },
     { label: "Career", href: "/career" },

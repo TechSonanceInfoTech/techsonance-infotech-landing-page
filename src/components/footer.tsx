@@ -101,6 +101,7 @@ export function Footer() {
               {[
                 { label: "Contact Us", href: "/contact" },
                 { label: "Services", href: "/services" },
+                { label: "Portfolio", href: "/portfolio" },
                 { label: "Blog", href: "/blog" },
                 { label: "About Us", href: "/about" },
                 { label: "FAQs", href: "/faqs" },
