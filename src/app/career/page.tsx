@@ -10,6 +10,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { submitJobApplication } from "@/actions/career"
 import { careerConfig } from "@/config/career-config"
+import { FadeInUp, FadeInLeft, FadeInRight, StaggerContainer, StaggerItem } from "@/components/animations"
+
 
 export default function CareerPage() {
   const [isPending, startTransition] = useTransition()

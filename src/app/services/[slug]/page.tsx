@@ -20,10 +20,30 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const service = servicesData[slug]
   if (!service) return { title: "Service Not Found" }
-  
+
+  const keywords = [
+    service.title.toLowerCase(),
+    `${service.title} services`,
+    `${service.title} company`,
+    "custom software development",
+    "TechSonance",
+  ]
+
   return {
-    title: `${service.title} | TechSonance InfoTech LLP`,
-    description: service.shortDescription,
+    title: `${service.title} Services | TechSonance InfoTech`,
+    description: `${service.shortDescription} Get expert ${service.title.toLowerCase()} services from TechSonance. Free consultation available.`,
+    keywords: keywords,
+    openGraph: {
+      title: `${service.title} Services | TechSonance InfoTech`,
+      description: service.shortDescription,
+      type: "website",
+      siteName: "TechSonance InfoTech",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.title} Services | TechSonance`,
+      description: service.shortDescription,
+    },
   }
 }
 
@@ -66,11 +86,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   // Actually, to avoid breaking the app for the user, I should probably keep the old layout as a 'default' fallback 
   // until all 6 are done. But the user asked for "Revamp". 
   // Let's return a basic fallback container for now to confirm the switch works).
-  
+
   return (
     <div className="p-20 text-center">
-       <h1 className="text-2xl font-bold">Layout Not Implemented Yet</h1>
-       <p>Building layout for: {service.layoutStyle}</p>
+      <h1 className="text-2xl font-bold">Layout Not Implemented Yet</h1>
+      <p>Building layout for: {service.layoutStyle}</p>
     </div>
   )
 }

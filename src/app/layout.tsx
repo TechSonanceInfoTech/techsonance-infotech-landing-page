@@ -15,6 +15,85 @@ const fontJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
+  keywords: [
+    "custom web development",
+    "mobile app development",
+    "software development company",
+    "hire dedicated developers",
+    "React developers",
+    "Node.js development",
+    "cloud solutions",
+    "AI integration",
+    "enterprise software",
+    "full-stack development"
+  ],
+  authors: [{ name: "TechSonance InfoTech LLP" }],
+  creator: "TechSonance InfoTech LLP",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: "TechSonance InfoTech",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+// Structured Data for SEO
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TechSonance InfoTech LLP",
+  "url": "https://techsonance.com",
+  "logo": "https://techsonance.com/logo.png",
+  "description": "Custom software development company specializing in web applications, mobile apps, cloud solutions, and AI integration.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "availableLanguage": "English"
+  }
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Software Development",
+  "provider": {
+    "@type": "Organization",
+    "name": "TechSonance InfoTech LLP"
+  },
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Software Development Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Development" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud & DevOps Solutions" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Analytics & AI Solutions" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-Commerce Development" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hire Dedicated Developers" } }
+    ]
+  }
 };
 
 export default function RootLayout({
@@ -24,6 +103,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
@@ -52,3 +141,4 @@ export default function RootLayout({
     </html>
   );
 }
+

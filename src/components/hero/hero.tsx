@@ -1,13 +1,66 @@
 "use client"
 
+import { useRef, useEffect } from "react"
 import { siteConfig } from "@/config/site"
 import { VideoBackground } from "@/components/hero/video-background"
 import { TypewriterTitle } from "@/components/hero/typewriter-title"
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion"
 import { Rocket, TrendingUp, Target, ArrowUpRight } from "lucide-react"
 import { LucideIcon } from "lucide-react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+// Register GSAP plugin
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const statsRef = useRef<HTMLDivElement>(null)
+  const prefersReducedMotion = useReducedMotion()
+
+  // Parallax scroll effect for the whole section
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  })
+
+  // Smooth parallax transforms
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+  const smoothY = useSpring(y, { stiffness: 100, damping: 30 })
+
+  // GSAP animations on mount
+  useEffect(() => {
+    if (prefersReducedMotion || !contentRef.current) return
+
+    const ctx = gsap.context(() => {
+      // Floating animation for stat cards
+      gsap.to(".stat-card", {
+        y: -10,
+        duration: 2,
+        ease: "power1.inOut",
+        stagger: 0.2,
+        repeat: -1,
+        yoyo: true
+      })
+
+      // Glow pulse animation
+      gsap.to(".glow-pulse", {
+        boxShadow: "0 0 60px 20px rgba(6, 182, 212, 0.3)",
+        duration: 2,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true
+      })
+    }, contentRef)
+
+    return () => ctx.revert()
+  }, [prefersReducedMotion])
+
   const scrollToConsultancy = () => {
     const section = document.getElementById('consultancy-section');
     if (section) {
@@ -15,66 +68,182 @@ export function Hero() {
     }
   };
 
+  // Animation variants with proper typing
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
+    }
+  } as const
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  }
+
+  const badgeVariants = {
+    hidden: { opacity: 0, scale: 0.5, rotate: -10 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 200,
+        damping: 20
+      }
+    }
+  }
+
+  const buttonVariants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15
+      }
+    },
+    hover: {
+      scale: 1.05,
+      boxShadow: "0 20px 40px rgba(6, 182, 212, 0.4)",
+      transition: { duration: 0.3 }
+    },
+    tap: { scale: 0.98 }
+  }
+
+
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20 lg:pt-24">
+    <section
+      ref={sectionRef}
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20 lg:pt-24"
+    >
       <VideoBackground />
 
-      <div className="container relative z-10 flex flex-col items-center text-center px-4 md:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
+      {/* Animated gradient orbs */}
+      <motion.div
+        className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-brand-cyan/30 to-transparent rounded-full blur-3xl pointer-events-none"
+        animate={{
+          x: [0, 30, 0],
+          y: [0, -20, 0],
+          scale: [1, 1.1, 1]
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-20 left-10 w-80 h-80 bg-gradient-to-tr from-[#29619e]/30 to-transparent rounded-full blur-3xl pointer-events-none"
+        animate={{
+          x: [0, -20, 0],
+          y: [0, 30, 0],
+          scale: [1, 1.15, 1]
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      />
 
+      <motion.div
+        ref={contentRef}
+        style={prefersReducedMotion ? {} : { y: smoothY, opacity, scale }}
+        className="container relative z-10 flex flex-col items-center text-center px-4 md:px-6 lg:px-8 py-12 md:py-16 lg:py-20"
+      >
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
           className="flex flex-col items-center max-w-5xl w-full"
         >
-          <div className="mb-4 md:mb-6 px-3 md:px-4 py-1.5 md:py-2 rounded-full border-2 border-cyan-400/50 bg-gradient-to-r from-cyan-50 to-[#29619e]/10 backdrop-blur-md shadow-xl shadow-cyan-500/20 inline-block">
-            <span className="text-[10px] md:text-xs font-black text-slate-900 uppercase tracking-[0.2em] md:tracking-[0.3em]">
-              Next-Gen Digital Agency
-            </span>
-          </div>
+          {/* Animated Badge */}
+          <motion.div
+            variants={badgeVariants}
+            className="glow-pulse mb-4 md:mb-6 px-4 md:px-5 py-2 md:py-2.5 rounded-full border-2 border-cyan-400/50 bg-gradient-to-r from-cyan-50 to-[#29619e]/10 backdrop-blur-md shadow-xl shadow-cyan-500/20 inline-block"
+          >
+            <motion.span
+              className="text-[10px] md:text-xs font-black text-slate-900 uppercase tracking-[0.2em] md:tracking-[0.3em]"
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              🚀 Next-Gen Digital Agency
+            </motion.span>
+          </motion.div>
 
-          <TypewriterTitle />
+          {/* Title with enhanced animation */}
+          <motion.div variants={itemVariants}>
+            <TypewriterTitle />
+          </motion.div>
 
+          {/* Subtitle with blur reveal */}
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            variants={itemVariants}
             className="max-w-3xl text-base md:text-lg lg:text-xl xl:text-2xl text-slate-700 mb-8 md:mb-12 lg:mb-16 leading-relaxed font-normal px-4"
           >
             {siteConfig.hero.subHeadline}
           </motion.p>
 
+          {/* CTA Buttons with stagger */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+            variants={containerVariants}
             className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-10 w-full sm:w-auto"
           >
-            <button
+            <motion.button
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
               onClick={scrollToConsultancy}
-              className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-brand-cyan to-[#29619e] text-white font-bold rounded-full shadow-xl shadow-cyan-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 touch-target"
+              className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-brand-cyan to-[#29619e] text-white font-bold rounded-full shadow-xl shadow-cyan-500/30 flex items-center justify-center gap-2 touch-target relative overflow-hidden"
             >
-              <span className="text-sm md:text-base">Let's Talk Business</span>
-              <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5" />
-            </button>
-            <button
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full"
+                animate={{ x: ["0%", "200%"] }}
+                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+              />
+              <span className="relative text-sm md:text-base">Let's Talk Business</span>
+              <ArrowUpRight className="relative w-4 h-4 md:w-5 md:h-5" />
+            </motion.button>
+
+            <motion.button
+              variants={buttonVariants}
+              whileHover={{ scale: 1.05, borderColor: "rgba(6, 182, 212, 0.8)" }}
+              whileTap={{ scale: 0.98 }}
               onClick={scrollToConsultancy}
-              className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white/10 backdrop-blur-md border-2 border-white/30 text-slate-800 font-bold rounded-full hover:bg-gradient-to-r hover:from-brand-cyan/20 hover:to-[#29619e]/20 hover:border-brand-cyan/50 transition-all duration-300 flex items-center justify-center gap-2 touch-target"
+              className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white/10 backdrop-blur-md border-2 border-white/30 text-slate-800 font-bold rounded-full flex items-center justify-center gap-2 touch-target transition-colors duration-300"
             >
               <span className="text-sm md:text-base">Schedule a free call</span>
-            </button>
+            </motion.button>
           </motion.div>
         </motion.div>
 
+        {/* Stats Section with GSAP float animation */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          ref={statsRef}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
+          transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
           className="mt-6 md:mt-8 w-full max-w-4xl"
         >
-          <p className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-8">
+          <motion.p
+            className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-[0.2em] md:tracking-[0.3em] mb-6 md:mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+          >
             Driving Digital Transformation
-          </p>
+          </motion.p>
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 lg:gap-4">
             <StatCard value="2x" label="Faster Time-to-Market" delay={0} icon={Rocket} />
             <StatCard value="40%" label="Cost Optimization" delay={1} icon={TrendingUp} />
@@ -82,7 +251,31 @@ export function Hero() {
             <StatCard value="100%" label="Scalability" delay={3} icon={ArrowUpRight} />
           </div>
         </motion.div>
-      </div>
+      </motion.div>
+
+      {/* Scroll indicator with bounce animation */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-2 cursor-pointer"
+          onClick={scrollToConsultancy}
+        >
+          <span className="text-xs text-slate-500 uppercase tracking-widest">Scroll</span>
+          <div className="w-6 h-10 rounded-full border-2 border-slate-300 flex justify-center pt-2">
+            <motion.div
+              className="w-1.5 h-1.5 bg-brand-cyan rounded-full"
+              animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
@@ -90,28 +283,48 @@ export function Hero() {
 function StatCard({ value, label, delay, icon: Icon }: { value: string, label: string, delay: number, icon: LucideIcon }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 0.8 + delay * 0.1, duration: 0.5 }}
-      className="group cursor-default"
+      initial={{ opacity: 0, y: 30, rotateX: -15 }}
+      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+      transition={{
+        delay: 1 + delay * 0.15,
+        duration: 0.6,
+        type: "spring",
+        stiffness: 100
+      }}
+      whileHover={{
+        y: -8,
+        scale: 1.05,
+        boxShadow: "0 25px 50px rgba(6, 182, 212, 0.2)"
+      }}
+      className="stat-card group cursor-default"
     >
-      <div className="p-3 md:p-4 lg:p-5 rounded-xl md:rounded-2xl bg-white/50 backdrop-blur-md border border-white/40 shadow-xl shadow-slate-900/10 hover:shadow-2xl hover:shadow-slate-900/15 hover:bg-white/70 transition-all duration-300 hover:scale-105 hover:-translate-y-1">
+      <div className="p-3 md:p-4 lg:p-5 rounded-xl md:rounded-2xl bg-white/60 backdrop-blur-lg border border-white/50 shadow-xl shadow-slate-900/10 transition-all duration-300">
+        {/* Animated glow on hover */}
+        <motion.div
+          className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-brand-cyan/20 to-[#29619e]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        />
+
         {/* Icon with gradient background */}
-        <div className="mb-2 md:mb-3 flex justify-center">
-          <div className="p-1.5 md:p-2 lg:p-3 rounded-lg md:rounded-xl bg-gradient-to-br from-cyan-400/20 to-[#29619e]/20 group-hover:from-cyan-400/30 group-hover:to-[#29619e]/30 transition-all duration-300">
-            <Icon className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-transparent bg-clip-text bg-gradient-to-br from-cyan-500 to-[#29619e]" style={{
-              filter: 'drop-shadow(0 0 8px rgba(6, 182, 212, 0.3))',
-              stroke: 'url(#icon-gradient)',
-              strokeWidth: 2
-            }} />
-
-          </div>
+        <div className="relative mb-2 md:mb-3 flex justify-center">
+          <motion.div
+            className="p-1.5 md:p-2 lg:p-3 rounded-lg md:rounded-xl bg-gradient-to-br from-cyan-400/20 to-[#29619e]/20"
+            whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Icon className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-brand-cyan" strokeWidth={2} />
+          </motion.div>
         </div>
 
-        <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-[#29619e] mb-1 md:mb-2">
+        {/* Animated counter effect */}
+        <motion.div
+          className="relative text-2xl md:text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-[#29619e] mb-1 md:mb-2"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 1.2 + delay * 0.15, type: "spring", stiffness: 200 }}
+        >
           {value}
-        </div>
-        <div className="text-[9px] md:text-[10px] lg:text-xs font-semibold text-slate-700 leading-tight">
+        </motion.div>
+        <div className="relative text-[9px] md:text-[10px] lg:text-xs font-semibold text-slate-700 leading-tight">
           {label}
         </div>
       </div>

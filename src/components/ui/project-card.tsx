@@ -46,7 +46,17 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
       >
         {/* Number Badge - Only render if number is provided */}
         {number && (
-          <div className="absolute -top-4 lg:top-8 right-4 lg:right-auto lg:left-1/2 lg:-translate-x-1/2 z-20 w-16 h-16 rounded-full bg-gradient-to-r from-brand-cyan to-[#29619e] flex items-center justify-center shadow-xl shadow-brand-cyan/40">
+          <div
+            className={cn(
+              "absolute -top-4 lg:top-8 z-20 w-16 h-16 rounded-full bg-gradient-to-r from-brand-cyan to-[#29619e] flex items-center justify-center shadow-xl shadow-brand-cyan/40",
+              // Mobile positioning
+              "right-4",
+              // Desktop positioning - Ensure it sits on the image side to avoid text overlap
+              imageOnRight
+                ? "lg:left-1/2 lg:ml-8 lg:right-auto"
+                : "lg:right-1/2 lg:mr-8 lg:left-auto"
+            )}
+          >
             <span className="text-2xl font-bold text-white">{number}</span>
           </div>
         )}
