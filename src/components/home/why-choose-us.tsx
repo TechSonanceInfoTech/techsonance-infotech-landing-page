@@ -152,7 +152,7 @@ export function WhyChooseUs() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: "easeOut" as any
       }
     }
   }
@@ -164,7 +164,7 @@ export function WhyChooseUs() {
       transition: {
         duration: 0.8,
         delay: 0.5,
-        ease: "easeOut"
+        ease: "easeOut" as any
       }
     }
   }
