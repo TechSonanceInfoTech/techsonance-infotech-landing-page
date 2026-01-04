@@ -46,6 +46,16 @@ export async function submitJobApplication(formData: FormData) {
 
   // Check if credentials exist - otherwise mock success for demo
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error("CRITICAL: EMAIL_USER or EMAIL_PASS environment variables are missing.")
+    
+    // In production, we should probably fail if emails are critical
+    if (process.env.NODE_ENV === 'production') {
+      return { 
+        success: false, 
+        message: "Server configuration error: Email credentials missing." 
+      }
+    }
+
     console.warn("EMAIL credentials not found. Mocking email send.")
     console.log("Career Application Data:", { name, email, role, message, resumeName })
     

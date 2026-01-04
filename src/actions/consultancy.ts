@@ -13,9 +13,19 @@ export async function sendConsultancyEmail(formData: FormData) {
     return { success: false, message: "Name and Email are required." }
   }
 
-  // Check if credentials exist - otherwise mock success for demo
+  // Check if credentials exist
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.warn("EMAIL credentials not found. Mocking email send.")
+    console.error("CRITICAL: EMAIL_USER or EMAIL_PASS environment variables are missing.")
+    
+    // In production, we should probably fail if emails are critical
+    if (process.env.NODE_ENV === 'production') {
+      return { 
+        success: false, 
+        message: "Server configuration error: Email credentials missing." 
+      }
+    }
+
+    console.warn("Dev Mode: Mocking email send.")
     console.log("Contact Form Data:", { name, email, phone, message, service })
     
     // Simulate network delay

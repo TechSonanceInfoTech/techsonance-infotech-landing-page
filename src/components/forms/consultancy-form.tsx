@@ -17,7 +17,6 @@ export function ConsultancyForm({ serviceName }: { serviceName: string }) {
       formData.append("service", serviceName)
     }
 
-    try {
       const result = await sendConsultancyEmail(formData)
       if (result.success) {
         setStatus("success")
@@ -27,6 +26,7 @@ export function ConsultancyForm({ serviceName }: { serviceName: string }) {
         setMessage(result.message || "Something went wrong.")
       }
     } catch (error) {
+      console.error(error)
       setStatus("error")
       setMessage("An unexpected error occurred.")
     }
