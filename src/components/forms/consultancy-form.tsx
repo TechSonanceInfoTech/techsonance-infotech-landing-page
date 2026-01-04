@@ -17,6 +17,7 @@ export function ConsultancyForm({ serviceName }: { serviceName: string }) {
       formData.append("service", serviceName)
     }
 
+    try {
       const result = await sendConsultancyEmail(formData)
       if (result.success) {
         setStatus("success")

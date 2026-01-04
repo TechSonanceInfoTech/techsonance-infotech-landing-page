@@ -4,6 +4,7 @@ import * as React from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 
 export interface ProjectCardProps extends React.HTMLAttributes<HTMLDivElement> {
   imgSrc: string;
@@ -65,11 +66,12 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
         <div className="w-full lg:w-1/2 relative">
           <div className="relative overflow-hidden rounded-2xl shadow-2xl">
             <div className="aspect-[4/3] lg:aspect-[16/10]">
-              <img
+              <Image
                 src={imgSrc}
                 alt={title}
-                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                loading="lazy"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
             </div>
             {/* Gradient Overlay */}

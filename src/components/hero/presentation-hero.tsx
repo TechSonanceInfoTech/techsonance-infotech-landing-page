@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowUpRight, ChevronRight, Play } from "lucide-react"
 import { siteConfig } from "@/config/site"
+import Image from "next/image"
 
 const projects = [
     {
@@ -194,10 +195,13 @@ export function PresentationHero() {
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.8 }}
                                 >
-                                    <img
+                                    <Image
                                         src={projects[currentIndex].image}
                                         alt={projects[currentIndex].title}
-                                        className="w-full h-full object-cover object-top"
+                                        fill
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
+                                        className="object-cover object-top"
+                                        priority
                                     />
 
                                     {/* Gradient Overlay */}

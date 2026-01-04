@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState, ReactNode } from "react"
 import { motion, useScroll, useTransform, useReducedMotion, MotionValue, useSpring } from "framer-motion"
+import Image from "next/image"
 
 // ============================================================================
 // PARALLAX COMPONENTS - Mobile-optimized parallax effects
@@ -202,25 +203,35 @@ export function ParallaxImage({
             style={{ willChange: shouldDisable ? "auto" : "transform" }}
         >
             {shouldDisable ? (
-                <img
-                    src={src}
-                    alt={alt}
-                    className="w-full h-full object-cover"
-                    loading={priority ? "eager" : "lazy"}
-                    onLoad={() => setIsLoaded(true)}
-                />
+                <div className="relative w-full h-full">
+                    <Image
+                        src={src}
+                        alt={alt}
+                        fill
+                        sizes="100vw"
+                        className="object-cover"
+                        priority={priority}
+                        onLoad={() => setIsLoaded(true)}
+                    />
+                </div>
             ) : (
-                <motion.img
-                    src={src}
-                    alt={alt}
-                    className="w-full h-full object-cover"
-                    loading={priority ? "eager" : "lazy"}
+                <motion.div 
                     style={{ y: smoothY, scale }}
-                    onLoad={() => setIsLoaded(true)}
+                    className="relative w-full h-full"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: isLoaded ? 1 : 0 }}
                     transition={{ duration: 0.5 }}
-                />
+                >
+                    <Image
+                        src={src}
+                        alt={alt}
+                        fill
+                        sizes="100vw"
+                        className="object-cover"
+                        priority={priority}
+                        onLoad={() => setIsLoaded(true)}
+                    />
+                </motion.div>
             )}
         </div>
     )
