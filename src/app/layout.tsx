@@ -13,7 +13,7 @@ const fontJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://techsonance.com'),
+  metadataBase: new URL('https://techsonanceinfotech.com'),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://techsonance.com',
+    url: 'https://techsonanceinfotech.com',
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
@@ -90,8 +90,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "TechSonance InfoTech LLP",
-  "url": "https://techsonance.com",
-  "logo": "https://techsonance.com/logo.png",
+  "url": "https://techsonanceinfotech.com",
+  "logo": "https://techsonanceinfotech.com/logo.png",
   "description": "Custom software development company specializing in web applications, mobile apps, cloud solutions, and AI integration.",
   "address": {
     "@type": "PostalAddress",
@@ -155,33 +155,7 @@ export default function RootLayout({
         {children}
         <Footer />
 
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              name: 'TechSonance InfoTech LLP',
-              url: 'https://techsonance.com',
-              logo: 'https://techsonance.com/logo.png',
-              description: siteConfig.description,
-              address: {
-                '@type': 'PostalAddress',
-                addressCountry: 'IN',
-              },
-              sameAs: [
-                'https://www.linkedin.com/company/techsonance',
-                'https://twitter.com/techsonance',
-              ],
-              contactPoint: {
-                '@type': 'ContactPoint',
-                contactType: 'Customer Service',
-                availableLanguage: ['English'],
-              },
-            }),
-          }}
-        />
+
 
         {/* Global Icon Gradient Definition */}
         <svg width="0" height="0" className="absolute w-0 h-0 overflow-hidden" aria-hidden="true">

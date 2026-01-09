@@ -1,67 +1,68 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://techsonance.com'
+    const baseUrl = 'https://techsonanceinfotech.com'
+    const lastModified = new Date('2026-01-09')
 
     // Static pages
     const staticPages = [
         {
             url: baseUrl,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'weekly' as const,
             priority: 1.0,
         },
         {
             url: `${baseUrl}/about`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/services`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'weekly' as const,
             priority: 0.9,
         },
         {
             url: `${baseUrl}/portfolio`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'weekly' as const,
             priority: 0.9,
         },
         {
             url: `${baseUrl}/career`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'weekly' as const,
             priority: 0.7,
         },
         {
             url: `${baseUrl}/contact`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/blog`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'daily' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/pricing`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'monthly' as const,
             priority: 0.7,
         },
         {
             url: `${baseUrl}/faqs`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'monthly' as const,
             priority: 0.6,
         },
         {
             url: `${baseUrl}/site-map`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'monthly' as const,
             priority: 0.5,
         },
@@ -83,7 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const servicePages = services.map((service) => ({
         url: `${baseUrl}/services/${service}`,
-        lastModified: new Date(),
+        lastModified,
         changeFrequency: 'monthly' as const,
         priority: 0.8,
     }))
@@ -102,7 +103,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const hireDeveloperPages = technologies.map((tech) => ({
         url: `${baseUrl}/hire/${tech}`,
-        lastModified: new Date(),
+        lastModified,
         changeFrequency: 'monthly' as const,
         priority: 0.7,
     }))
@@ -121,7 +122,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const caseStudyPages = caseStudies.map((study) => ({
         url: `${baseUrl}/case-studies/${study}`,
-        lastModified: new Date(),
+        lastModified,
         changeFrequency: 'monthly' as const,
         priority: 0.7,
     }))
@@ -130,13 +131,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const legalPages = [
         {
             url: `${baseUrl}/legal/privacy-policy`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'yearly' as const,
             priority: 0.3,
         },
         {
             url: `${baseUrl}/legal/terms-conditions`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: 'yearly' as const,
             priority: 0.3,
         },
