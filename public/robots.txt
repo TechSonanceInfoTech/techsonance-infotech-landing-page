@@ -1,0 +1,23 @@
+# robots.txt for TechSonance InfoTech
+# Allow all legitimate crawlers to access the site
+
+User-agent: *
+Allow: /
+
+# Disallow crawling of API routes and internal files
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://techsonance.com/sitemap.xml
+
+# Block common bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

@@ -13,33 +13,61 @@ const fontJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: siteConfig.name,
+  metadataBase: new URL('https://techsonance.com'),
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`
+  },
   description: siteConfig.description,
   keywords: [
-    "custom web development",
-    "mobile app development",
-    "software development company",
-    "hire dedicated developers",
-    "React developers",
-    "Node.js development",
-    "cloud solutions",
-    "AI integration",
-    "enterprise software",
-    "full-stack development"
+    'software development',
+    'web development',
+    'mobile app development',
+    'SaaS development',
+    'AI automation',
+    'full-stack development',
+    'custom software solutions',
+    'TechSonance',
+    'IT consulting',
+    'digital transformation',
+    'custom web development',
+    'hire dedicated developers',
+    'React developers',
+    'Node.js development',
+    'cloud solutions',
+    'AI integration',
+    'enterprise software'
   ],
-  authors: [{ name: "TechSonance InfoTech LLP" }],
-  creator: "TechSonance InfoTech LLP",
+  authors: [{ name: 'TechSonance InfoTech LLP' }],
+  creator: 'TechSonance InfoTech LLP',
+  publisher: 'TechSonance InfoTech LLP',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://techsonance.com',
     title: siteConfig.name,
     description: siteConfig.description,
-    siteName: "TechSonance InfoTech",
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'TechSonance InfoTech - Custom Software Development',
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
+    images: ['/logo.png'],
+    creator: '@techsonance',
   },
   robots: {
     index: true,
@@ -47,10 +75,13 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
+  },
+  verification: {
+    google: 'your-google-verification-code', // Replace with actual verification code from Google Search Console
   },
 };
 
@@ -124,6 +155,34 @@ export default function RootLayout({
         {children}
         <Footer />
 
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'TechSonance InfoTech LLP',
+              url: 'https://techsonance.com',
+              logo: 'https://techsonance.com/logo.png',
+              description: siteConfig.description,
+              address: {
+                '@type': 'PostalAddress',
+                addressCountry: 'IN',
+              },
+              sameAs: [
+                'https://www.linkedin.com/company/techsonance',
+                'https://twitter.com/techsonance',
+              ],
+              contactPoint: {
+                '@type': 'ContactPoint',
+                contactType: 'Customer Service',
+                availableLanguage: ['English'],
+              },
+            }),
+          }}
+        />
+
         {/* Global Icon Gradient Definition */}
         <svg width="0" height="0" className="absolute w-0 h-0 overflow-hidden" aria-hidden="true">
           <defs>
@@ -141,4 +200,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 

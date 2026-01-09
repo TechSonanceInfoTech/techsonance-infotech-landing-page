@@ -263,7 +263,7 @@ export function Footer() {
             <Link href="/about" className="transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-cyan-500 hover:to-[#29619e]">About Us</Link>
             <Link href="/legal/privacy-policy" className="transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-cyan-500 hover:to-[#29619e]">Privacy Policy</Link>
             <Link href="/legal/terms-conditions" className="transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-cyan-500 hover:to-[#29619e]">Terms & Conditions</Link>
-            <Link href="/sitemap" className="transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-cyan-500 hover:to-[#29619e]">Sitemap</Link>
+            <Link href="/site-map" className="transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-cyan-500 hover:to-[#29619e]">Sitemap</Link>
           </nav>
         </div>
       </div>
