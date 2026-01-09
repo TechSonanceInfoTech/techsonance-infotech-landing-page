@@ -1,10 +1,14 @@
 "use client"
 
+import { Metadata } from "next"
 import { motion } from "framer-motion"
 import { CheckCircle2, ArrowRight, Zap, Repeat, Handshake, MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { aboutConfig } from "@/config/about-config"
 import Link from "next/link"
+
+// Note: Metadata export doesn't work in client components, so we'll add it via layout
+// For now, the root layout handles the default metadata
 
 export default function AboutPage() {
   return (

@@ -1,3 +1,4 @@
+import { Metadata } from "next"
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero/hero";
 import { ServicesSection } from "@/components/services/services-section";
@@ -6,6 +7,49 @@ import { CaseStudies } from "@/components/home/case-studies";
 
 import { ConsultancyForm } from "@/components/case-study/consultancy-form";
 import { CheckCircle2, Sparkles } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "TechSonance InfoTech - Custom Software Development & IT Solutions",
+  description: "Empowering businesses with next-generation digital solutions, AI integration, and scalable cloud architectures. Expert web development, mobile apps, and custom software solutions.",
+  keywords: [
+    "custom software development",
+    "web application development",
+    "mobile app development",
+    "AI integration",
+    "cloud solutions",
+    "digital transformation",
+    "enterprise software",
+    "SaaS development",
+    "IT consulting",
+    "software company India"
+  ],
+  openGraph: {
+    title: "TechSonance InfoTech - Custom Software Development & IT Solutions",
+    description: "Transform your business with cutting-edge software solutions. Web apps, mobile development, AI integration, and cloud architecture.",
+    url: "https://techsonance.com",
+    siteName: "TechSonance InfoTech LLP",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "TechSonance InfoTech - Software Development Company",
+      },
+    ],
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TechSonance InfoTech - Custom Software Development",
+    description: "Transform your business with cutting-edge software solutions. Web apps, mobile development, AI integration.",
+    images: ["/logo.png"],
+  },
+  alternates: {
+    canonical: "https://techsonance.com",
+  },
+}
+
 
 export default function Home() {
   return (
