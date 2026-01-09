@@ -6,6 +6,10 @@ import { CheckCircle2, ArrowRight, Zap, Repeat, Handshake, MessageSquare } from 
 import { Button } from "@/components/ui/button"
 import { aboutConfig } from "@/config/about-config"
 import Link from "next/link"
+import { Parallax } from "@/components/animations/parallax"
+import { FadeInUp, FadeInLeft, FadeInRight, StaggerContainer, StaggerItem, BlurFadeIn } from "@/components/animations"
+import { useRevealAnimation } from "@/components/animations/gsap-scroll"
+
 
 // Note: Metadata export doesn't work in client components, so we'll add it via layout
 // For now, the root layout handles the default metadata

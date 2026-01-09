@@ -27,6 +27,7 @@ export function ConsultancyForm({ serviceName }: { serviceName: string }) {
         setMessage(result.message || "Something went wrong.")
       }
     } catch (error) {
+      console.error(error)
       setStatus("error")
       setMessage("An unexpected error occurred.")
     }

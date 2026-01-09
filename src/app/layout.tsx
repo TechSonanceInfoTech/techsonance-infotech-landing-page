@@ -29,7 +29,14 @@ export const metadata: Metadata = {
     'custom software solutions',
     'TechSonance',
     'IT consulting',
-    'digital transformation'
+    'digital transformation',
+    'custom web development',
+    'hire dedicated developers',
+    'React developers',
+    'Node.js development',
+    'cloud solutions',
+    'AI integration',
+    'enterprise software'
   ],
   authors: [{ name: 'TechSonance InfoTech LLP' }],
   creator: 'TechSonance InfoTech LLP',
@@ -78,6 +85,48 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured Data for SEO
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TechSonance InfoTech LLP",
+  "url": "https://techsonance.com",
+  "logo": "https://techsonance.com/logo.png",
+  "description": "Custom software development company specializing in web applications, mobile apps, cloud solutions, and AI integration.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "availableLanguage": "English"
+  }
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Software Development",
+  "provider": {
+    "@type": "Organization",
+    "name": "TechSonance InfoTech LLP"
+  },
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Software Development Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Development" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud & DevOps Solutions" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Analytics & AI Solutions" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-Commerce Development" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hire Dedicated Developers" } }
+    ]
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -85,6 +134,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
@@ -141,3 +200,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+

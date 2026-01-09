@@ -2,6 +2,10 @@
 
 import { motion } from "framer-motion"
 import { ProjectCard } from "@/components/ui/project-card"
+import { Parallax } from "@/components/animations/parallax"
+import { useRevealAnimation } from "@/components/animations/gsap-scroll"
+import { BlurFadeIn } from "@/components/animations"
+
 
 const caseStudies = [
   {
@@ -45,10 +49,17 @@ const caseStudies = [
 export function CaseStudies() {
   return (
     <section className="relative w-full py-20 md:py-28 lg:py-32 bg-gradient-to-b from-white via-slate-50/30 to-white overflow-hidden">
-      {/* Background decoration */}
+      {/* Parallax Background decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-      <div className="absolute top-20 right-0 w-96 h-96 bg-brand-cyan/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+
+      <Parallax speed={-0.15} className="absolute top-20 right-0 w-96 h-96 pointer-events-none" disableOnMobile>
+        <div className="w-full h-full bg-brand-cyan/5 rounded-full blur-3xl" />
+      </Parallax>
+
+      <Parallax speed={0.2} className="absolute bottom-20 left-0 w-96 h-96 pointer-events-none" disableOnMobile>
+        <div className="w-full h-full bg-blue-500/5 rounded-full blur-3xl" />
+      </Parallax>
+
 
       <div className="container relative z-10 px-4 sm:px-6 md:px-8 mx-auto max-w-7xl">
         {/* Header */}
@@ -60,13 +71,13 @@ export function CaseStudies() {
           className="text-center mb-16 md:mb-20"
         >
           <span className="text-brand-cyan font-bold tracking-wider uppercase text-sm mb-4 block">
-            Proprietary Enterprise Solutions
+            Enterprise Software Solutions
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark mb-6">
-            Case Studies
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-[#29619e] mb-6">
+            Our Success Stories & Case Studies
           </h2>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            Showcasing our best work - where creativity meets functionality
+            Real-world software solutions we've built - where technical excellence meets business impact
           </p>
         </motion.div>
 
@@ -78,7 +89,7 @@ export function CaseStudies() {
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
+              transition={{
                 duration: 0.8,
                 delay: index * 0.1,
                 ease: [0.25, 0.4, 0.25, 1]

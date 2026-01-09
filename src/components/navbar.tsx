@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { hireDevelopersConfig } from "@/config/hire-developers";
@@ -43,10 +44,13 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             {/* Logo */}
             <div className="relative w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 transition-transform duration-300 group-hover:scale-105">
-              <img
+              <Image
                 src="/logo.png"
                 alt={`${siteConfig.name} Logo`}
+                width={64}
+                height={64}
                 className="w-full h-full object-contain relative z-10 drop-shadow-md"
+                priority
               />
             </div>
             <div className="flex flex-col justify-center">
@@ -165,61 +169,65 @@ export function Navbar() {
 
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-16 md:top-20 left-0 w-full bg-white border-b border-white/20 shadow-xl backdrop-blur-xl px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 flex flex-col gap-2 sm:gap-3 md:gap-4 animate-in slide-in-from-top-5 max-h-[calc(100vh-4rem)] overflow-y-auto">
-            {siteConfig.navItems.map((item: any) => (
-              <div
-                key={item.href}
-                className="border-b border-slate-100 last:border-0 pb-2 sm:pb-3 md:pb-4"
-              >
-                {item.isMegaMenu ? (
-                  <div className="space-y-2">
-                    <div className="text-base sm:text-lg font-medium text-slate-900 py-2 sm:py-2.5 md:py-3 min-h-[44px] flex items-center">
+          <div className="md:hidden absolute top-16 md:top-20 left-0 w-full bg-white/95 border-b border-white/20 shadow-xl backdrop-blur-md flex flex-col gap-2 sm:gap-3 md:gap-4 animate-in slide-in-from-top-5 max-h-[calc(100vh-4rem)] overflow-y-auto">
+            <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 flex flex-col gap-2 sm:gap-3 md:gap-4">
+              {siteConfig.navItems.map((item: any) => (
+                <div
+                  key={item.href}
+                  className="border-b border-slate-100 last:border-0 pb-2 sm:pb-3 md:pb-4"
+                >
+                  {item.isMegaMenu ? (
+                    <div className="space-y-2">
+                      <div className="text-base sm:text-lg font-medium text-slate-900 py-2 sm:py-2.5 md:py-3 min-h-[44px] flex items-center">
+                        {item.label}
+                      </div>
+                      {/* Mobile Accordion for Mega Menu */}
+                      <div className="pl-2 sm:pl-3 md:pl-4 space-y-2 sm:space-y-3 md:space-y-4">
+                        {hireDevelopersConfig.categories.map((cat) => (
+                          <div key={cat.title}>
+                            <div className="text-xs sm:text-sm font-bold text-brand-cyan mb-2 uppercase tracking-wider">
+                              {cat.title}
+                            </div>
+                            <div className="grid grid-cols-1 gap-1 sm:gap-2 md:gap-3 border-l-2 border-brand-cyan/20 pl-2 sm:pl-2.5 md:pl-3">
+                              {cat.items.map((subItem) => (
+                                <Link
+                                  key={subItem.slug}
+                                  href={`/hire/${subItem.slug}`}
+                                  prefetch={true}
+                                  className="text-sm sm:text-base text-slate-600 transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-cyan-500 hover:to-[#29619e] py-3 sm:py-3.5 min-h-[44px] flex items-center -ml-2 pl-2 w-[calc(100%+0.5rem)] active:bg-slate-50"
+                                  onClick={() => setIsMenuOpen(false)}
+                                >
+                                  {subItem.label.replace("Hire ", "")}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      prefetch={true}
+                      className="block text-base sm:text-lg font-medium text-slate-700 hover:text-brand-cyan py-3 sm:py-3.5 min-h-[44px] flex items-center -mx-3 px-3 w-[calc(100%+1.5rem)] active:bg-slate-50 rounded-lg"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
                       {item.label}
-                    </div>
-                    {/* Mobile Accordion for Mega Menu */}
-                    <div className="pl-2 sm:pl-3 md:pl-4 space-y-2 sm:space-y-3 md:space-y-4">
-                      {hireDevelopersConfig.categories.map((cat) => (
-                        <div key={cat.title}>
-                          <div className="text-xs sm:text-sm font-bold text-brand-cyan mb-2 uppercase tracking-wider">
-                            {cat.title}
-                          </div>
-                          <div className="grid grid-cols-1 gap-1 sm:gap-2 md:gap-3 border-l-2 border-brand-cyan/20 pl-2 sm:pl-2.5 md:pl-3">
-                            {cat.items.map((subItem) => (
-                              <Link
-                                key={subItem.slug}
-                                href={`/hire/${subItem.slug}`}
-                                className="text-sm sm:text-base text-slate-600 transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-cyan-500 hover:to-[#29619e] py-2.5 sm:py-3 min-h-[44px] flex items-center"
-                                onClick={() => setIsMenuOpen(false)}
-                              >
-                                {subItem.label.replace("Hire ", "")}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className="block text-base sm:text-lg font-medium text-slate-700 hover:text-brand-cyan py-2.5 sm:py-3 min-h-[44px] flex items-center"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                )}
+                    </Link>
+                  )}
+                </div>
+              ))}
+              <div className="pt-2 pb-4 sm:pb-6 md:pb-10">
+                <Button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsQuoteOpen(true);
+                  }}
+                  className="w-full bg-gradient-to-r from-brand-cyan to-[#29619e] text-white border-0 shadow-lg shadow-brand-cyan/30 py-5 sm:py-6 rounded-xl font-bold text-base sm:text-lg min-h-[48px]"
+                >
+                  Get a Quote
+                </Button>
               </div>
-            ))}
-            <div className="pt-2 pb-4 sm:pb-6 md:pb-10">
-              <Button
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  setIsQuoteOpen(true);
-                }}
-                className="w-full bg-gradient-to-r from-brand-cyan to-[#29619e] text-white border-0 shadow-lg shadow-brand-cyan/30 py-5 sm:py-6 rounded-xl font-bold text-base sm:text-lg min-h-[48px]"
-              >
-                Get a Quote
-              </Button>
             </div>
           </div>
         )}

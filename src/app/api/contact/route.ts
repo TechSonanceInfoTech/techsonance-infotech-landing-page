@@ -11,20 +11,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Verify Captcha
-    const secret = process.env.RECAPTCHA_SECRET_KEY;
-    if (secret) {
-      const verifyRes = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${captchaToken}`, {
-        method: 'POST',
-      });
-      const verifyData = await verifyRes.json();
-      if (!verifyData.success) {
-        return NextResponse.json({ error: 'Captcha verification failed' }, { status: 400 });
-      }
-    } else {
-       console.warn("RECAPTCHA_SECRET_KEY is missing. Skipping verification.");
-    }
-    
     // Configure Transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -132,11 +118,18 @@ export async function POST(req: Request) {
     };
 
     // Send Email
+    // Send Email
     try {
-      if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-         await transporter.sendMail(mailOptions);
+      if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+        console.error("CRITICAL: EMAIL_USER or EMAIL_PASS environment variables are missing.");
+        
+        if (process.env.NODE_ENV === 'production') {
+           return NextResponse.json({ error: 'Server configuration error: Email credentials missing.' }, { status: 500 });
+        }
+        
+        console.log("Dev Mode: Simulating email send:", mailOptions);
       } else {
-         console.log("Email credentials not found. Simulating email send:", mailOptions);
+         await transporter.sendMail(mailOptions);
       }
       return NextResponse.json({ success: true });
     } catch (error) {

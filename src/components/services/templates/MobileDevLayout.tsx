@@ -3,6 +3,7 @@ import { ServiceData } from "@/config/services"
 import { CheckCircle2, Smartphone, ArrowRight, AppWindow, Wifi, Lock, Fingerprint, Battery } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { ConsultancyForm } from "@/components/forms/consultancy-form"
+import Image from "next/image"
 
 export function MobileDevLayout({ service }: { service: ServiceData }) {
     return (
@@ -58,10 +59,13 @@ export function MobileDevLayout({ service }: { service: ServiceData }) {
                                     <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/30 to-blue-500/30 rounded-3xl blur-2xl opacity-50 animate-pulse"></div>
 
                                     {/* Main image */}
-                                    <img
+                                    <Image
                                         src="/mobile.jpg"
                                         alt="Mobile App Development - iOS & Android Apps"
+                                        width={500}
+                                        height={600}
                                         className="relative w-full h-auto rounded-3xl shadow-2xl shadow-cyan-500/30 border-4 border-white/10"
+                                        priority
                                     />
 
                                     {/* Floating badge - Top right */}

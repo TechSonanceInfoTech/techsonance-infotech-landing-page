@@ -3,6 +3,16 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
 
+  // Image optimization
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
+
   // Security headers
   async headers() {
     return [
@@ -61,3 +71,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+

@@ -4,8 +4,6 @@ import * as React from "react"
 import { X, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
-
 interface QuoteModalProps {
   isOpen: boolean
   onClose: () => void
@@ -22,8 +20,7 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
   const [isSubmitting, setIsSubmitting] = React.useState(false)
   const [isSuccess, setIsSuccess] = React.useState(false)
   
-  // reCAPTCHA v3 Hook
-  const { executeRecaptcha } = useGoogleReCaptcha()
+
 
   if (!isOpen) return null
 
@@ -49,31 +46,11 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     setIsSubmitting(true)
 
     try {
-      // Check if reCAPTCHA is ready
-      if (!executeRecaptcha) {
-        console.warn("reCAPTCHA not ready yet")
-        setErrors({ ...errors, form: "Security check not ready. Please wait a moment and try again." })
-        setIsSubmitting(false)
-        return
-      }
-
-      console.log("Executing reCAPTCHA...")
-      let token = ""
-      try {
-        token = await executeRecaptcha("submit_quote")
-        console.log("reCAPTCHA token received")
-      } catch (recaptchaError) {
-        console.error("reCAPTCHA execution failed:", recaptchaError)
-        setErrors({ ...errors, form: "Security check failed. Please check your connection." })
-        setIsSubmitting(false)
-        return
-      }
-
       console.log("Submitting form data...")
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, captchaToken: token }),
+        body: JSON.stringify({ ...formData }),
       })
 
       const data = await response.json()
@@ -207,14 +184,8 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                        "Send Message"
                      )}
                    </Button>
-                   <p className="text-xs text-slate-400 text-center">
-                     This site is protected by reCAPTCHA and the Google 
-                     <a href="https://policies.google.com/privacy" className="text-brand-cyan hover:underline mx-1">Privacy Policy</a> and 
-                     <a href="https://policies.google.com/terms" className="text-brand-cyan hover:underline mx-1">Terms of Service</a> apply.
-                   </p>
                 </div>
                 {errors.form && <p className="text-center text-red-500 text-sm bg-red-50 p-2 rounded-lg">{errors.form}</p>}
-                {errors.captcha && <p className="text-center text-red-500 text-sm">{errors.captcha}</p>}
               </form>
             </div>
           </div>

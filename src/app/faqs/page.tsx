@@ -6,6 +6,8 @@ import { ChevronDown, HelpCircle, MessageSquare } from "lucide-react"
 import { faqConfig } from "@/config/faq-config"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { FadeInUp, StaggerContainer, StaggerItem, BlurFadeIn } from "@/components/animations"
+
 
 export default function FAQPage() {
   const [activeCategory, setActiveCategory] = useState(faqConfig.categories[0].id)

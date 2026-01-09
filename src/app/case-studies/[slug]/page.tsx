@@ -5,8 +5,41 @@ import Link from "next/link"
 import Image from "next/image"
 import { ConsultancyForm } from "@/components/case-study/consultancy-form"
 import { FAQSection } from "@/components/home/faq-section"
+import { Metadata } from "next"
 
+// Generate dynamic metadata for SEO
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const data = caseStudiesData[slug as keyof typeof caseStudiesData]
 
+  if (!data) {
+    return { title: "Case Study Not Found" }
+  }
+
+  return {
+    title: `${data.title} Case Study | TechSonance InfoTech`,
+    description: data.description,
+    keywords: [
+      data.category.toLowerCase(),
+      data.title.toLowerCase(),
+      "case study",
+      "software project",
+      ...data.techStack.slice(0, 3).map(t => t.toLowerCase())
+    ],
+    openGraph: {
+      title: `${data.title} | Case Study`,
+      description: data.description,
+      type: "article",
+      images: [data.heroImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.description,
+      images: [data.heroImage],
+    },
+  }
+}
 
 // Detailed Case Study Data
 const caseStudiesData = {

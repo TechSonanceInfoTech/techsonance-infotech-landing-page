@@ -4,6 +4,7 @@ import * as React from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 
 export interface ProjectCardProps extends React.HTMLAttributes<HTMLDivElement> {
   imgSrc: string;
@@ -46,7 +47,17 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
       >
         {/* Number Badge - Only render if number is provided */}
         {number && (
-          <div className="absolute -top-4 lg:top-8 right-4 lg:right-auto lg:left-1/2 lg:-translate-x-1/2 z-20 w-16 h-16 rounded-full bg-gradient-to-r from-brand-cyan to-[#29619e] flex items-center justify-center shadow-xl shadow-brand-cyan/40">
+          <div
+            className={cn(
+              "absolute -top-4 lg:top-8 z-20 w-16 h-16 rounded-full bg-gradient-to-r from-brand-cyan to-[#29619e] flex items-center justify-center shadow-xl shadow-brand-cyan/40",
+              // Mobile positioning
+              "right-4",
+              // Desktop positioning - Ensure it sits on the image side to avoid text overlap
+              imageOnRight
+                ? "lg:left-1/2 lg:ml-8 lg:right-auto"
+                : "lg:right-1/2 lg:mr-8 lg:left-auto"
+            )}
+          >
             <span className="text-2xl font-bold text-white">{number}</span>
           </div>
         )}
@@ -55,11 +66,12 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
         <div className="w-full lg:w-1/2 relative">
           <div className="relative overflow-hidden rounded-2xl shadow-2xl">
             <div className="aspect-[4/3] lg:aspect-[16/10]">
-              <img
+              <Image
                 src={imgSrc}
                 alt={title}
-                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                loading="lazy"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
             </div>
             {/* Gradient Overlay */}

@@ -125,15 +125,6 @@ export default function HireTechPage() {
                 <Input name="phone" placeholder="Contact Number" className="bg-gray-50 border-gray-200 h-12 focus:border-brand-cyan focus:ring-brand-cyan" />
                 <Textarea name="message" placeholder="Message" className="bg-gray-50 border-gray-200 min-h-[100px] focus:border-brand-cyan focus:ring-brand-cyan" required />
 
-                <div className="border border-gray-200 bg-gray-50 p-3 rounded flex items-center gap-3 w-fit">
-                  <div className="w-5 h-5 border-2 border-gray-400 rounded" />
-                  <span className="text-sm text-gray-700">I'm not a robot</span>
-                  <div className="ml-2 flex flex-col items-center opacity-60">
-                    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="captcha" className="w-5" />
-                    <span className="text-[8px] text-gray-500">reCAPTCHA</span>
-                  </div>
-                </div>
-
                 {formStatus.type === 'error' && (
                   <div className="text-red-500 text-sm flex items-center gap-2">
                     <AlertCircle className="w-4 h-4" /> {formStatus.message}
